@@ -1,24 +1,24 @@
-#include "../H/Barco.h"
+#include "Barco.h"
 
 Barco::Barco() {
 }
 
 Barco::Barco(const Barco& orig) {
-    this->SetId(orig.GetId());
-    this->SetNombre(orig.GetNombre());
+    this->id=orig.GetId();
+    this->nombre=orig.GetNombre();
 }
 
 Barco::~Barco() {
 }
 
-Barco::Barco(string nombre, string id) {
-    this->SetNombre(nombre);
-    this->SetId(id);
+Barco::Barco(string Nombre, string Id) {
+    this->nombre = Nombre;
+    this->id = Id;
 }
 
 Barco::Barco(DtBarco barco) {
-    this->SetNombre(barco.GetNombre());
-    this->SetId(barco.GetId());
+    this->nombre = barco.GetNombre();
+    this->id = barco.GetId();
 }
 
 void Barco::SetId(string id) {

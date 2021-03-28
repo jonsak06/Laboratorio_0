@@ -1,29 +1,26 @@
-#include "../H/BarcoPesquero.h"
-using namespace std;
+#include "BarcoPesquero.h"
 
 BarcoPesquero::BarcoPesquero() {
 }
 
 BarcoPesquero::BarcoPesquero(const BarcoPesquero& orig) {
-    this->SetCapacidad(orig.GetCapacidad());
-    this->SetCarga(orig.GetCarga());
+    this->capacidad=orig.GetCapacidad();
+    this->carga=orig.GetCarga();
 }
 
 BarcoPesquero::~BarcoPesquero() {
 }
 
-BarcoPesquero::BarcoPesquero(string nombre, string id, int capacidad, int carga) : Barco(nombre,id) {
-    this->SetNombre(nombre);
-    this->SetId(id);
-    this->SetCapacidad(capacidad);
-    this->SetCarga(carga);
+BarcoPesquero::BarcoPesquero(string Nombre, string Id, int Capacidad, int Carga) : Barco(Nombre,Id) {
+    this->capacidad = Capacidad;
+    this->carga = Carga;
 }
 
 BarcoPesquero::BarcoPesquero(DtBarcoPesquero barcoPesquero){
     this->SetNombre(barcoPesquero.GetNombre());
     this->SetId(barcoPesquero.GetId());
-    this->SetCapacidad(barcoPesquero.GetCapacidad());
-    this->SetCarga(barcoPesquero.GetCarga());
+    this->capacidad = barcoPesquero.GetCapacidad();
+    this->carga = barcoPesquero.GetCarga();
 }
 
 void BarcoPesquero::SetCarga(int carga) {
@@ -43,6 +40,6 @@ int BarcoPesquero::GetCapacidad() const {
 }
 
 void BarcoPesquero::arribar(float cargaDespacho) {
-    this->SetCarga(this->GetCarga() - cargaDespacho);
+    this->carga = carga - cargaDespacho;
 }
 

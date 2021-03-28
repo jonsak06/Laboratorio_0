@@ -8,6 +8,7 @@ using namespace std;
 class DtBarco {
 public:
     DtBarco();
+    DtBarco(const DtBarco& orig);
     virtual ~DtBarco();
     DtBarco(string, string);
     string GetId() const;

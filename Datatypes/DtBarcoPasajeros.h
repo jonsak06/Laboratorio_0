@@ -1,7 +1,7 @@
 #ifndef DTBARCOPASAJEROS_H
 #define DTBARCOPASAJEROS_H
 
-#include "../../Otros/H/TipoTamanio.h"
+#include "../Otros/TipoTamanio.h"
 #include "DtBarco.h"
 
 #include <string>
@@ -11,6 +11,7 @@ using namespace std;
 class DtBarcoPasajeros : public DtBarco {
 public:
     DtBarcoPasajeros();
+    DtBarcoPasajeros(const DtBarcoPasajeros& orig);
     virtual ~DtBarcoPasajeros();
     DtBarcoPasajeros(string, string, int, TipoTamanio);
     TipoTamanio GetTamanio() const;

@@ -4,6 +4,7 @@
 class DtFecha {
 public:
     DtFecha();
+    DtFecha(const DtFecha& orig);
     virtual ~DtFecha();
     DtFecha(int, int, int);
     int GetAnio() const;

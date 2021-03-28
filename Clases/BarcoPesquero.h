@@ -2,7 +2,9 @@
 #define BARCOPESQUERO_H
 
 #include "Barco.h"
-#include "../../DataType/H/DtBarcoPesquero.h"
+#include "../Datatypes/DtBarcoPesquero.h"
+
+#include <string>
 
 using namespace std;
 

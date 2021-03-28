@@ -1,8 +1,9 @@
 #ifndef PUERTO_H
 #define PUERTO_H
 
-#include "../../DataType/H/DtFecha.h"
-#include "../../DataType/H/DtPuerto.h"
+#include "../Datatypes/DtFecha.h"
+#include "../Datatypes/DtPuerto.h"
+
 #include <string>
 
 using namespace std;

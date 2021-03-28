@@ -1,25 +1,24 @@
-#include "../H/Arribo.h"
-using namespace std;
+#include "Arribo.h"
 
 Arribo::Arribo() {
 }
 
 Arribo::Arribo(const Arribo& orig) {
-    this->SetFecha(orig.GetFecha());
-    this->SetCarga(orig.GetCarga());
+    this->carga=orig.GetCarga();
+    this->fecha=orig.GetFecha();
 }
 
 Arribo::~Arribo() {
 }
 
-Arribo::Arribo(DtFecha fecha,float carga) {
-    this->SetFecha(fecha);
-    this->SetCarga(carga);
+Arribo::Arribo(DtFecha Fecha,float Carga) {
+    this->fecha = Fecha;
+    this->carga = Carga;
 }
 
 Arribo::Arribo(DtArribo arribo) {
-    this->SetFecha(arribo.GetFecha());
-    this->SetCarga(arribo.GetCarga());
+    this->fecha = arribo.GetFecha();
+    this->carga = arribo.GetCarga();
 }
 
 void Arribo::SetCarga(float carga) {

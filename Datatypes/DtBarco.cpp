@@ -1,6 +1,11 @@
-#include "../H/DtBarco.h"
+#include "DtBarco.h"
 
 DtBarco::DtBarco() {
+}
+
+DtBarco::DtBarco(const DtBarco& orig) {
+    this->id=orig.GetId();
+    this->nombre=orig.GetNombre();
 }
 
 DtBarco::~DtBarco() {

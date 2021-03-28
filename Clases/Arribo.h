@@ -1,8 +1,8 @@
 #ifndef ARRIBO_H
 #define ARRIBO_H
 
-#include "../../DataType/H/DtFecha.h"
-#include "../../DataType/H/DtArribo.h"
+#include "../Datatypes/DtFecha.h"
+#include "../Datatypes/DtArribo.h"
 
 class Arribo {
 public:

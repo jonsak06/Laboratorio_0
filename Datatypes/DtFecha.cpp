@@ -1,6 +1,12 @@
-#include "../H/DtFecha.h"
+#include "DtFecha.h"
 
 DtFecha::DtFecha() {
+}
+
+DtFecha::DtFecha(const DtFecha& orig) {
+    this->dia=orig.GetDia();
+    this->mes=orig.GetMes();
+    this->anio=orig.GetAnio();
 }
 
 DtFecha::~DtFecha() {

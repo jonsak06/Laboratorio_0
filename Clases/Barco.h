@@ -1,7 +1,8 @@
 #ifndef BARCO_H
 #define BARCO_H
 
-#include "../../DataType/H/DtBarco.h"
+#include "../Datatypes/DtBarco.h"
+#include <string>
 
 using namespace std;
 

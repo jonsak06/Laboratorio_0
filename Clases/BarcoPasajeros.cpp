@@ -1,28 +1,26 @@
-#include "../H/BarcoPasajeros.h"
+#include "BarcoPasajeros.h"
 
 BarcoPasajeros::BarcoPasajeros() {
 }
 
 BarcoPasajeros::BarcoPasajeros(const BarcoPasajeros& orig) {
-    this->SetCantPasajeros(orig.GetCantPasajeros());
-    this->SetTamanio(orig.GetTamanio());
+    this->cantPasajeros=orig.GetCantPasajeros();
+    this->tamanio=orig.GetTamanio();
 }
 
 BarcoPasajeros::~BarcoPasajeros() {
 }
 
-BarcoPasajeros::BarcoPasajeros(string nombre, string id, int cantPasajeros, TipoTamanio tamanio) : Barco (nombre,id) {
-    this->SetNombre(nombre);
-    this->SetId(id);
-    this->SetCantPasajeros(cantPasajeros);
-    this->SetTamanio(tamanio);
+BarcoPasajeros::BarcoPasajeros(string Nombre, string Id, int CantPasajeros, TipoTamanio Tamanio) : Barco (Nombre,Id) {
+    this->cantPasajeros = CantPasajeros;
+    this->tamanio = Tamanio;
 }
 
 BarcoPasajeros::BarcoPasajeros(DtBarcoPasajeros barcoPasajeros){
     this->SetNombre(barcoPasajeros.GetNombre());
     this->SetId(barcoPasajeros.GetId());
-    this->SetCantPasajeros(barcoPasajeros.GetCantPasajeros());
-    this->SetTamanio(barcoPasajeros.GetTamanio());
+    this->cantPasajeros = barcoPasajeros.GetCantPasajeros();
+    this->tamanio = barcoPasajeros.GetTamanio();
 }
 
 void BarcoPasajeros::SetTamanio(TipoTamanio tamanio) {

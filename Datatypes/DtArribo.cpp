@@ -1,6 +1,12 @@
-#include "../H/DtArribo.h"
+#include "DtArribo.h"
 
 DtArribo::DtArribo() {
+}
+
+DtArribo::DtArribo(const DtArribo& orig) {
+    this->barco = orig.GetBarco();
+    this->carga = orig.GetCarga();
+    this->fecha = orig.GetFecha();
 }
 
 DtArribo::~DtArribo() {

@@ -1,5 +1,4 @@
-#include "../H/Puerto.h"
-using namespace std;
+#include "Puerto.h"
 
 Puerto::Puerto() {
 }
@@ -10,16 +9,16 @@ Puerto::Puerto(const Puerto& orig) {
 Puerto::~Puerto() {
 }
 
-Puerto::Puerto(string nombre,string id,DtFecha fecha) {
-    this->SetNombre(nombre);
-    this->SetId(id);
-    this->SetFechaCreacion(fecha);
+Puerto::Puerto(string Nombre,string Id,DtFecha Fecha) {
+    this->nombre = Nombre;
+    this->id = Id;
+    this->fechaCreacion = Fecha;
 }
 
 Puerto::Puerto(DtPuerto puerto){
-    this->SetNombre(puerto.GetNombre());
-    this->SetId(puerto.GetId());
-    this->SetFechaCreacion(puerto.GetFechaCreacion());
+    this->nombre = puerto.GetNombre();
+    this->id = puerto.GetId();
+    this->fechaCreacion = puerto.GetFechaCreacion();
 }
 
 void Puerto::SetFechaCreacion(DtFecha fechaCreacion) {
