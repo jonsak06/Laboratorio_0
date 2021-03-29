@@ -1,6 +1,6 @@
-main: main.o ./Clases/Arribo.o ./Clases/Barco.o ./Clases/BarcoPasajeros.o ./Clases/BarcoPesquero.o ./Otros/ColBarco.o ./Clases/Puerto.o ./Datatypes/DtArribo.o ./Datatypes/DtBarco.o ./Datatypes/DtBarcoPasajeros.o ./Datatypes/DtBarcoPesquero.o ./Datatypes/DtPuerto.o ./Datatypes/DtFecha.o
-	g++ main.o ./Clases/Arribo.o ./Clases/Barco.o ./Clases/BarcoPasajeros.o ./Clases/BarcoPesquero.o ./Otros/ColBarco.o ./Clases/Puerto.o ./Datatypes/DtArribo.o ./Datatypes/DtBarco.o ./Datatypes/DtBarcoPasajeros.o ./Datatypes/DtBarcoPesquero.o ./Datatypes/DtPuerto.o ./Datatypes/DtFecha.o
-
+main: main.o ./Clases/Arribo.o ./Clases/Barco.o ./Clases/BarcoPasajeros.o ./Clases/BarcoPesquero.o ./Otros/ColBarco.o ./Clases/Puerto.o ./Datatypes/DtArribo.o ./Datatypes/DtBarco.o ./Datatypes/DtBarcoPasajeros.o ./Datatypes/DtBarcoPesquero.o ./Datatypes/DtPuerto.o ./Datatypes/DtFecha.o ./Otros/ingresarFecha.o
+	g++ main.o ./Clases/Arribo.o ./Clases/Barco.o ./Clases/BarcoPasajeros.o ./Clases/BarcoPesquero.o ./Otros/ColBarco.o ./Clases/Puerto.o ./Datatypes/DtArribo.o ./Datatypes/DtBarco.o ./Datatypes/DtBarcoPasajeros.o ./Datatypes/DtBarcoPesquero.o ./Datatypes/DtPuerto.o ./Datatypes/DtFecha.o ./Otros/ingresarFecha.o
+	
 main.o: main.cpp
 	g++ -c main.cpp
 
@@ -39,6 +39,12 @@ DtPuerto.o: ./Datatypes/DtPuerto.cpp
 
 DtFecha.o: ./Datatypes/DtFecha.cpp
 	g++ -c ./Datatypes/DtFecha.cpp
+
+ingresarFecha.o: ./Otros/ingresarFecha.cpp
+	g++ -c ./Otros/ingresarFecha.cpp
+
+# agregarPuerto.o: ./Otros/agregarPuerto.cpp
+# 	g++ -c ./Otros/agregarPuerto.cpp
 
 clean: 
 	rm ./*/*.o main.o a.out

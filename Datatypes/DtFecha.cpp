@@ -13,9 +13,16 @@ DtFecha::~DtFecha() {
 }
 
 DtFecha::DtFecha(int Dia, int Mes, int Anio) {
-    this->dia=Dia;
-    this->mes=Mes;
-    this->anio=Anio;
+    if(Dia < 1 || Dia > 31 || Mes < 1 || Mes > 12 || Anio < 1900)
+    {
+        throw invalid_argument("Esta fecha es incorrecta");
+    }
+    else 
+    {
+        this->dia=Dia;
+        this->mes=Mes;
+        this->anio=Anio;
+    }
 }
 
 int DtFecha::GetAnio() const {

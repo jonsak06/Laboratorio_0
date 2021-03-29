@@ -3,7 +3,7 @@
 
 #include "../Datatypes/DtFecha.h"
 #include "../Datatypes/DtPuerto.h"
-
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -26,6 +26,7 @@ private:
     string nombre;
     DtFecha fechaCreacion;
 };
+
 
 #endif
 
