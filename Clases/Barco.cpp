@@ -56,6 +56,20 @@ int tamanioElegido;
 TipoTamanio tamanio;
 void Barco::agregarBarco(DtBarco& barco)
 {
+    for(int i=0; i<ultimoBarcoPesquero;i++)
+    {
+        if(barco.GetId()==BarcoPesquero::barcosPesqueros[i].GetId()){
+            throw invalid_argument("El barco ya existe");
+            return;
+        }
+    }
+    for(int i=0; i<ultimoBarcoPasajeros;i++)
+    {
+        if(barco.GetId() == BarcoPasajeros::barcosPasajeros[i].GetId()){
+            throw invalid_argument("El barco ya existe");
+            return;
+        }
+    }
     while(true)
     {
         cout << "Tipo de barco:\n" << "1- Barco pesquero\n" << "2- Barco de pasajeros\n";
@@ -68,13 +82,6 @@ void Barco::agregarBarco(DtBarco& barco)
     
     if(opcion == 1)
     {
-        for(int i=0; i<ultimoBarcoPesquero;i++)
-        {
-            if(barco.GetId()==BarcoPesquero::barcosPesqueros[i].GetId()){
-                throw invalid_argument("El barco ya existe");
-                return;
-            }
-        }
         cout << "Ingrese capacidad del barco: ";
         cin >> capacidad;
         while(true)
@@ -83,22 +90,17 @@ void Barco::agregarBarco(DtBarco& barco)
             cin >> carga;
             if(carga > capacidad)
             {
-                cout << "La capacidad debe ser mayor a la carga.\n";
+                cout << "La carga no puede ser mayor a la capacidad.\n";
             }else{
                 break;
             }
         }
-        BarcoPesquero barcoPesquero(barco.GetNombre(),barco.GetId(),capacidad,carga);
+        BarcoPesquero::barcosPesqueros[ultimoBarcoPesquero] = BarcoPesquero(barco.GetNombre(),barco.GetId(),capacidad,carga);
+        ultimoBarcoPesquero++;
         cout << "Barco agregado\n";
     }
     else{
-        for(int i=0; i<ultimoBarcoPasajeros;i++)
-        {
-            if(barco.GetId() == BarcoPasajeros::barcosPasajeros[i].GetId()){
-                throw invalid_argument("El barco ya existe");
-                return;
-            }
-        }
+        
         cout << "Ingrese la cantidad de pasajeros: ";
         cin >> cantidadPasajeros;
         while(true)
@@ -128,7 +130,7 @@ void Barco::agregarBarco(DtBarco& barco)
         default:
             break;
         }
-        BarcoPasajeros barcoPasajeros(barco.GetNombre(), barco.GetId(), cantidadPasajeros, tamanio);
+        BarcoPasajeros::barcosPasajeros[ultimoBarcoPasajeros] = BarcoPasajeros(barco.GetNombre(), barco.GetId(), cantidadPasajeros, tamanio);
         cout << "Barco agregado\n";
     }
 

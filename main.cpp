@@ -44,19 +44,22 @@ int main() {
     cout << "Bienvenido." << endl;
 
     DtFecha hoy;
-    cout << "Fecha de hoy. ";
-    try{
-        hoy = ingresarFecha();
-    }catch(exception& e){
-        cout << e.what() << endl;
-    }
+    do
+    {
+        cout << "Fecha de hoy. ";
+        try{
+            hoy = ingresarFecha();
+        }catch(exception& e){
+            cout << e.what() << endl;
+        }
+    }while(hoy.GetDia() < 1 || hoy.GetDia() > 31 || hoy.GetMes() < 1 || hoy.GetMes() > 12 || hoy.GetAnio() < 1900);
     cout << hoy.GetDia() << "/" << hoy.GetMes() << "/" << hoy.GetAnio() << endl;
     
     //variables de agregarPuerto
     int opcion;
     string nombrePuerto, idPuerto;
-    //esto no es necesario, si lo dejamos seria para que se vea que usamos referencia:
     DtFecha fechaCreacionIngresada;
+    //esto no es necesario, si lo dejamos seria para que se vea que usamos referencia:
     DtFecha& fechaCreacion = fechaCreacionIngresada; //no es otra instancia, solamente una variable que apunta a lo mismo
 
     //variables de agregarBarco
@@ -74,20 +77,26 @@ int main() {
                 cin >> nombrePuerto;
                 cout << "Ingrese el id del puerto: ";
                 cin >> idPuerto;
-                cout << "Fecha de creacion del puerto. ";
-                try{
-                    fechaCreacionIngresada = ingresarFecha();
-                }catch(exception& e){
-                    cout << e.what() << endl;
-                }
+                do
+                {
+                    cout << "Fecha de creacion del puerto. ";
+                    try{
+                        fechaCreacionIngresada = ingresarFecha();
+                    }catch(exception& e){
+                        cout << e.what() << endl;
+                    }
+                } while (fechaCreacionIngresada.GetDia() < 1 || fechaCreacionIngresada.GetDia() > 31 
+                        || fechaCreacionIngresada.GetMes() < 1 || fechaCreacionIngresada.GetMes() > 12 
+                        || fechaCreacionIngresada.GetAnio() < 1900);
+                
                 Puerto::agregarPuerto(nombrePuerto, idPuerto, fechaCreacion);
-                cout << Puerto::puertos[0].GetFechaCreacion().GetAnio();
+
             }catch(exception& e){
                 cout << e.what() << endl;
             }
             break;
+            
         case 2:
-            //Aun estoy trabajando en la operacion agregarBarco
             cout << "Ingrese el nombre del barco: ";
             cin >> nombreBarco;
             cout << "Ingreses el id del barco: ";
