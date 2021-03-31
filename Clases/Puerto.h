@@ -8,6 +8,8 @@
 
 using namespace std;
 
+const int MAX_PUERTOS = 50;
+
 class Puerto {
 public:
     Puerto();
@@ -21,6 +23,8 @@ public:
     string GetNombre() const;
     void SetId(string id);
     string GetId() const;
+    static Puerto puertos[MAX_PUERTOS-1];
+    static void agregarPuerto(string, string, DtFecha&);
 private:
     string id;
     string nombre;

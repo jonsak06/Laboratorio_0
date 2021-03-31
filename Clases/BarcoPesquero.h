@@ -1,14 +1,15 @@
 #ifndef BARCOPESQUERO_H
 #define BARCOPESQUERO_H
 
-#include "Barco.h"
+#include "./Barco.h"
 #include "../Datatypes/DtBarcoPesquero.h"
 
 #include <string>
 
 using namespace std;
 
-class BarcoPesquero : public Barco {
+class BarcoPesquero : public Barco 
+{
 public:
     BarcoPesquero();
     BarcoPesquero(const BarcoPesquero& orig);
@@ -20,6 +21,7 @@ public:
     void SetCapacidad(int capacidad);
     int GetCapacidad() const;
     void arribar(float);
+    static BarcoPesquero barcosPesqueros[MAX_BARCOS/2-1];
 private:
     int capacidad;
     int carga;

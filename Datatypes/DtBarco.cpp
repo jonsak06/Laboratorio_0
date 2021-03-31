@@ -3,11 +3,6 @@
 DtBarco::DtBarco() {
 }
 
-DtBarco::DtBarco(const DtBarco& orig) {
-    this->id=orig.GetId();
-    this->nombre=orig.GetNombre();
-}
-
 DtBarco::~DtBarco() {
 }
 

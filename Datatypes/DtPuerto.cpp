@@ -3,13 +3,6 @@
 DtPuerto::DtPuerto() {
 }
 
-DtPuerto::DtPuerto(const DtPuerto& orig) {
-    this->id=orig.GetId();
-    this->nombre=orig.GetNombre();
-    this->fechaCreacion=orig.GetFechaCreacion();
-    this->cantArribos=orig.GetCantArribos();
-}
-
 DtPuerto::~DtPuerto() {
 }
 

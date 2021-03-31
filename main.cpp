@@ -1,18 +1,20 @@
-#include "./Otros/ColBarco.h"
-#include "./Datatypes/DtBarco.h"
-#include "./Clases/Barco.h"
-#include "./Datatypes/DtFecha.h"
-#include "./Datatypes/DtPuerto.h"
-#include "./Clases/Puerto.h"
-#include "./Otros/agregarPuerto.cpp"
+#include "Clases/Barco.h"
+#include "Clases/BarcoPasajeros.h"
+#include "Clases/BarcoPesquero.h"
+#include "Datatypes/DtBarco.h"
+#include "Otros/ColBarco.h"
+#include "Datatypes/DtFecha.h"
+#include "Datatypes/DtPuerto.h"
+#include "Clases/Puerto.h"
+#include "Otros/elegirOpcionDelMenu.cpp"
 
 using namespace std;
-
-const int MAX_BARCOS = 49;
 
 DtFecha ingresarFecha();
 
 int main() {
+
+
     //Test funcion agregar barco
 
     // DtBarco a = DtBarco("Hola","Chau");
@@ -39,36 +41,74 @@ int main() {
         cout << "\n";
     }*/
 
-    // Test ingresar fecha
-    // try{
-    //     ingresarFecha();
-    // }catch(exception& e){
-    //     cout << e.what() << endl;
-    // }
+    cout << "Bienvenido." << endl;
 
-    //Test agregar puerto
-    // DtFecha hoy(2,2,2000);
-    // puertos[0] = Puerto("d","d",hoy);
+    DtFecha hoy;
+    cout << "Fecha de hoy. ";
+    try{
+        hoy = ingresarFecha();
+    }catch(exception& e){
+        cout << e.what() << endl;
+    }
+    cout << hoy.GetDia() << "/" << hoy.GetMes() << "/" << hoy.GetAnio() << endl;
     
-    // try{
-    //     agregarPuerto("Mont", "pue", hoy);
-    //     cout << puertos[0].GetId();
-    // }catch(exception& e){
-    //     cout << e.what() << endl;
-    // }
-    // try{
-    //     agregarPuerto("Mont", "pue", hoy);
-    //     cout << puertos[1].GetId();
-    // }catch(exception& e){
-    //     cout << e.what() << endl;
-    // }
-    // try{
-    //     agregarPuerto("Mont", "pue", hoy);
-    //     cout << puertos[2].GetId();
-    // }catch(exception& e){
-    //     cout << e.what() << endl;
-    // }
+    //variables de agregarPuerto
+    int opcion;
+    string nombrePuerto, idPuerto;
+    //esto no es necesario, si lo dejamos seria para que se vea que usamos referencia:
+    DtFecha fechaCreacionIngresada;
+    DtFecha& fechaCreacion = fechaCreacionIngresada; //no es otra instancia, solamente una variable que apunta a lo mismo
 
+    //variables de agregarBarco
+    string nombreBarco, idBarco;
+    DtBarco barco;
+
+    do
+    {
+        opcion = elegirOpcionDelMenu();
+        switch (opcion)
+        {
+        case 1:
+            try{
+                cout << "Ingrese el nombre del puerto: ";
+                cin >> nombrePuerto;
+                cout << "Ingrese el id del puerto: ";
+                cin >> idPuerto;
+                cout << "Fecha de creacion del puerto. ";
+                try{
+                    fechaCreacionIngresada = ingresarFecha();
+                }catch(exception& e){
+                    cout << e.what() << endl;
+                }
+                Puerto::agregarPuerto(nombrePuerto, idPuerto, fechaCreacion);
+                cout << Puerto::puertos[0].GetFechaCreacion().GetAnio();
+            }catch(exception& e){
+                cout << e.what() << endl;
+            }
+            break;
+        case 2:
+            //Aun estoy trabajando en la operacion agregarBarco
+            cout << "Ingrese el nombre del barco: ";
+            cin >> nombreBarco;
+            cout << "Ingreses el id del barco: ";
+            cin >> idBarco;
+            barco = DtBarco(nombreBarco,idBarco);
+            try
+            {
+                Barco::agregarBarco(barco);
+            }
+            catch(exception& e)
+            {
+                cout << e.what() << endl;
+            }
+            
+            break;
+        
+        default:
+            break;
+        }
+    } while (opcion != 0);
+    
     return 0;
 }
 

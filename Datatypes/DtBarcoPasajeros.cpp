@@ -3,11 +3,6 @@
 DtBarcoPasajeros::DtBarcoPasajeros() {
 }
 
-DtBarcoPasajeros::DtBarcoPasajeros(const DtBarcoPasajeros& orig) {
-    this->cantPasajeros=orig.GetCantPasajeros();
-    this->tamanio=orig.GetTamanio();
-}
-
 DtBarcoPasajeros::~DtBarcoPasajeros() {
 }
 

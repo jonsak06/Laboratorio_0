@@ -1,6 +1,7 @@
 #ifndef DTBARCO_H
 #define DTBARCO_H
 
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -8,7 +9,6 @@ using namespace std;
 class DtBarco {
 public:
     DtBarco();
-    DtBarco(const DtBarco& orig);
     virtual ~DtBarco();
     DtBarco(string, string);
     string GetId() const;

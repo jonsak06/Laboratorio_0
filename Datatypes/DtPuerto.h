@@ -10,7 +10,6 @@ using namespace std;
 class DtPuerto {
 public:
     DtPuerto();
-    DtPuerto(const DtPuerto& orig);
     virtual ~DtPuerto();
     DtPuerto(string, string, DtFecha,int);
     int GetCantArribos() const;

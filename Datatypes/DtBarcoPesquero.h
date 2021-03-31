@@ -6,7 +6,6 @@
 class DtBarcoPesquero : public DtBarco {
 public:
     DtBarcoPesquero();
-    DtBarcoPesquero(const DtBarcoPesquero& orig);
     virtual ~DtBarcoPesquero();
     DtBarcoPesquero(string, string, int, int);
     int GetCarga() const;

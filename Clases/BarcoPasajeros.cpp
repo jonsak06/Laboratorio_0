@@ -12,6 +12,8 @@ BarcoPasajeros::~BarcoPasajeros() {
 }
 
 BarcoPasajeros::BarcoPasajeros(string Nombre, string Id, int CantPasajeros, TipoTamanio Tamanio) : Barco (Nombre,Id) {
+    this->SetNombre(Nombre);
+    this->SetId(Id);
     this->cantPasajeros = CantPasajeros;
     this->tamanio = Tamanio;
 }
