@@ -2,10 +2,10 @@
 #include "Clases/BarcoPasajeros.h"
 #include "Clases/BarcoPesquero.h"
 #include "Datatypes/DtBarco.h"
-#include "Otros/ColBarco.h"
 #include "Datatypes/DtFecha.h"
 #include "Datatypes/DtPuerto.h"
 #include "Clases/Puerto.h"
+#include "Clases/Col.h"
 #include "Otros/elegirOpcionDelMenu.cpp"
 
 using namespace std;
@@ -13,40 +13,12 @@ using namespace std;
 DtFecha ingresarFecha();
 
 int main() {
-
-
-    //Test funcion agregar barco
-
-    // DtBarco a = DtBarco("Hola","Chau");
-    // DtBarco c = DtBarco("Como","Estas");
-    // cout << a.GetNombre() << "---";
-    // cout << a.GetId() << "\n";
-    // cout << c.GetNombre() << "---";
-    // cout << c.GetId() << "\n";
-    // ColBarco b;
-    // try{
-    //     b.agregarBarco(a);
-    //     b.agregarBarco(a);
-    //     b.agregarBarco(c);
-    // }catch(exception& e){
-    //     cout << e.what() << endl;
-    // }
-
-    //Test funcion listar barcos
-    /*DtBarco* d[30] = {new DtBarco()};
-    d[30] = b.listarBarcos();
-    for(int x=0;x<30;x++){
-        cout << d[x]->GetNombre();
-        cout << d[x]->GetId();
-        cout << "\n";
-    }*/
-
-    cout << "Bienvenido." << endl;
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Bienvenido~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 
     DtFecha hoy;
     do
     {
-        cout << "Fecha de hoy. ";
+        cout << "\nFecha de hoy. ";
         try{
             hoy = ingresarFecha();
         }catch(exception& e){
@@ -58,9 +30,7 @@ int main() {
     //variables de agregarPuerto
     int opcion;
     string nombrePuerto, idPuerto;
-    DtFecha fechaCreacionIngresada;
-    //esto no es necesario, si lo dejamos seria para que se vea que usamos referencia:
-    DtFecha& fechaCreacion = fechaCreacionIngresada; //no es otra instancia, solamente una variable que apunta a lo mismo
+    DtFecha fechaCreacion; 
 
     //variables de agregarBarco
     string nombreBarco, idBarco;
@@ -73,21 +43,21 @@ int main() {
         {
         case 1:
             try{
+                cout << "\nIngrese el id del puerto: ";
+                cin >> idPuerto;
                 cout << "Ingrese el nombre del puerto: ";
                 cin >> nombrePuerto;
-                cout << "Ingrese el id del puerto: ";
-                cin >> idPuerto;
                 do
                 {
                     cout << "Fecha de creacion del puerto. ";
                     try{
-                        fechaCreacionIngresada = ingresarFecha();
+                        fechaCreacion = ingresarFecha();
                     }catch(exception& e){
                         cout << e.what() << endl;
                     }
-                } while (fechaCreacionIngresada.GetDia() < 1 || fechaCreacionIngresada.GetDia() > 31 
-                        || fechaCreacionIngresada.GetMes() < 1 || fechaCreacionIngresada.GetMes() > 12 
-                        || fechaCreacionIngresada.GetAnio() < 1900);
+                } while (fechaCreacion.GetDia() < 1 || fechaCreacion.GetDia() > 31 
+                        || fechaCreacion.GetMes() < 1 || fechaCreacion.GetMes() > 12 
+                        || fechaCreacion.GetAnio() < 1900);
                 
                 Puerto::agregarPuerto(nombrePuerto, idPuerto, fechaCreacion);
 
@@ -97,7 +67,7 @@ int main() {
             break;
             
         case 2:
-            cout << "Ingrese el nombre del barco: ";
+            cout << "\nIngrese el nombre del barco: ";
             cin >> nombreBarco;
             cout << "Ingreses el id del barco: ";
             cin >> idBarco;
@@ -113,6 +83,12 @@ int main() {
             
             break;
         
+        case 3:
+            Col::listarPuertos(); /*Lo correcto por lo que entiendo de la letra seria que este metodo devolviese un array y 
+                                    luego mostrar el contenido aca directo o con otra funcion. En ese caso no se crearia el 
+                                    Col::datosPuertos, se crearia un nuevo array cada vez que se llame la funcion*/
+            break;
+
         default:
             break;
         }

@@ -8,7 +8,7 @@ using namespace std;
 class DtFecha {
 public:
     DtFecha();
-    virtual ~DtFecha();
+    ~DtFecha();
     DtFecha(int, int, int);
     int GetAnio() const;
     int GetMes() const;

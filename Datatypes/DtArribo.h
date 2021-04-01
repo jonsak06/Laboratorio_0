@@ -7,7 +7,7 @@
 class DtArribo {
 public:
     DtArribo();
-    virtual ~DtArribo();
+    ~DtArribo();
     DtArribo(DtFecha,float,DtBarco);
     DtBarco GetBarco() const;
     float GetCarga() const;

@@ -46,8 +46,8 @@ void Barco::arribar(float cargaDespacho) {
 
 BarcoPasajeros BarcoPasajeros::barcosPasajeros[MAX_BARCOS/2-1] = {};
 BarcoPesquero BarcoPesquero::barcosPesqueros[MAX_BARCOS/2-1] = {};
-int ultimoBarcoPasajeros = 0;
-int ultimoBarcoPesquero = 0;
+int Barco::ultimoBarcoPasajeros = 0;
+int Barco::ultimoBarcoPesquero = 0;
 int opcion;
 int capacidad;
 int carga;
@@ -58,15 +58,10 @@ void Barco::agregarBarco(DtBarco& barco)
 {
     for(int i=0; i<ultimoBarcoPesquero;i++)
     {
-        if(barco.GetId()==BarcoPesquero::barcosPesqueros[i].GetId()){
-            throw invalid_argument("El barco ya existe");
-            return;
-        }
-    }
-    for(int i=0; i<ultimoBarcoPasajeros;i++)
-    {
-        if(barco.GetId() == BarcoPasajeros::barcosPasajeros[i].GetId()){
-            throw invalid_argument("El barco ya existe");
+        if(barco.GetId() == BarcoPesquero::barcosPesqueros[i].GetId() 
+        || barco.GetId() == BarcoPasajeros::barcosPasajeros[i].GetId())
+        {
+            throw invalid_argument("\nEl barco ya existe\n");
             return;
         }
     }
@@ -90,7 +85,7 @@ void Barco::agregarBarco(DtBarco& barco)
             cin >> carga;
             if(carga > capacidad)
             {
-                cout << "La carga no puede ser mayor a la capacidad.\n";
+                cout << "\nLa carga no puede ser mayor a la capacidad.\n";
             }else{
                 break;
             }

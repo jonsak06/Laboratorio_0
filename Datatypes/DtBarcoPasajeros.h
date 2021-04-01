@@ -11,7 +11,7 @@ using namespace std;
 class DtBarcoPasajeros : public DtBarco {
 public:
     DtBarcoPasajeros();
-    virtual ~DtBarcoPasajeros();
+    ~DtBarcoPasajeros();
     DtBarcoPasajeros(string, string, int, TipoTamanio);
     TipoTamanio GetTamanio() const;
     int GetCantPasajeros() const;

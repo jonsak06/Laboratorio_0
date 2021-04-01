@@ -8,7 +8,7 @@ class Arribo {
 public:
     Arribo();
     Arribo(const Arribo& orig);
-    virtual ~Arribo();
+    ~Arribo();
     Arribo(DtFecha,float);
     Arribo(DtArribo);
     void SetCarga(float carga);

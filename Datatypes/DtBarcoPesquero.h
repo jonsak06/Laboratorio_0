@@ -6,7 +6,7 @@
 class DtBarcoPesquero : public DtBarco {
 public:
     DtBarcoPesquero();
-    virtual ~DtBarcoPesquero();
+    ~DtBarcoPesquero();
     DtBarcoPesquero(string, string, int, int);
     int GetCarga() const;
     int GetCapacidad() const;

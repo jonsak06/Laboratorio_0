@@ -46,17 +46,17 @@ string Puerto::GetId() const {
 }
 
 Puerto Puerto::puertos[MAX_PUERTOS-1] = {};//como es estatico se tiene que inicializar fuera de la clase
-int ultimoPuerto = 0;
+int Puerto::ultimoPuerto = 0;
 void Puerto::agregarPuerto(string nombre, string id, DtFecha& fechaCreacion)
 {
     for(int i=0; i<ultimoPuerto;i++)
     {
         if(id==Puerto::puertos[i].GetId()){
-            throw invalid_argument("El puerto ya existe");
+            throw invalid_argument("\nEl puerto ya existe\n");
             return;
         }
     }
     Puerto::puertos[ultimoPuerto] = Puerto(nombre, id, fechaCreacion);
     ultimoPuerto++;
-    cout << "Puerto agregado.\n" << ultimoPuerto;
+    cout << "\nPuerto agregado.\n";
 }

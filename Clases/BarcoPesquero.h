@@ -13,7 +13,7 @@ class BarcoPesquero : public Barco
 public:
     BarcoPesquero();
     BarcoPesquero(const BarcoPesquero& orig);
-    virtual ~BarcoPesquero();
+    ~BarcoPesquero();
     BarcoPesquero(string, string, int, int);
     BarcoPesquero(DtBarcoPesquero);
     void SetCarga(int carga);

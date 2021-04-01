@@ -9,7 +9,7 @@ class BarcoPasajeros : public Barco{
 public:
     BarcoPasajeros();
     BarcoPasajeros(const BarcoPasajeros& orig);
-    virtual ~BarcoPasajeros();
+    ~BarcoPasajeros();
     BarcoPasajeros(string, string, int, TipoTamanio);
     BarcoPasajeros(DtBarcoPasajeros);
     void SetTamanio(TipoTamanio tamanio);

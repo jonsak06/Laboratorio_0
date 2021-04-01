@@ -22,6 +22,8 @@ class Barco {
         string GetNombre() const;
         virtual void arribar(float); 
         static void agregarBarco(DtBarco& barco);
+        static int ultimoBarcoPasajeros;
+        static int ultimoBarcoPesquero;
     private:
         string nombre;
         string id;

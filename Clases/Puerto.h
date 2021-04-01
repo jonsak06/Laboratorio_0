@@ -14,7 +14,7 @@ class Puerto {
 public:
     Puerto();
     Puerto(const Puerto& orig);
-    virtual ~Puerto();
+    ~Puerto();
     Puerto(string, string, DtFecha);
     Puerto(DtPuerto);
     void SetFechaCreacion(DtFecha fechaCreacion);
@@ -25,6 +25,7 @@ public:
     string GetId() const;
     static Puerto puertos[MAX_PUERTOS-1];
     static void agregarPuerto(string, string, DtFecha&);
+    static int ultimoPuerto;
 private:
     string id;
     string nombre;
