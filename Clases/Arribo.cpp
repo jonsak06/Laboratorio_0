@@ -16,9 +16,10 @@ Arribo::Arribo(DtFecha Fecha,float Carga) {
     this->carga = Carga;
 }
 
-Arribo::Arribo(DtArribo arribo) {
-    this->fecha = arribo.GetFecha();
-    this->carga = arribo.GetCarga();
+Arribo::Arribo(DtArribo datavalueArribo) {
+    this->fecha = datavalueArribo.GetFecha();
+    this->carga = datavalueArribo.GetCarga();
+    this->barco = datavalueArribo.GetBarco();
 }
 
 void Arribo::SetCarga(float carga) {
@@ -37,3 +38,11 @@ DtFecha Arribo::GetFecha() const {
     return fecha;
 }
 
+void Arribo::setBarco(Barco barco)
+{
+    this->barco = barco;
+}
+
+Barco Arribo::getBarco() const {
+    return this->barco;
+}

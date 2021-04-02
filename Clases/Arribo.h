@@ -3,6 +3,7 @@
 
 #include "../Datatypes/DtFecha.h"
 #include "../Datatypes/DtArribo.h"
+#include "Barco.h"
 
 class Arribo {
 public:
@@ -15,9 +16,12 @@ public:
     float GetCarga() const;
     void SetFecha(DtFecha fecha);
     DtFecha GetFecha() const;
+    void setBarco(Barco);
+    Barco getBarco() const;
 private:
     DtFecha fecha;
     float carga;
+    Barco barco;
 };
 
 #endif

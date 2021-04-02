@@ -3,6 +3,10 @@
 
 #include "../Datatypes/DtFecha.h"
 #include "../Datatypes/DtPuerto.h"
+#include "../Datatypes/DtArribo.h"
+#include "Arribo.h"
+#include "BarcoPesquero.h"
+#include "BarcoPasajeros.h"
 #include <vector>
 #include <string>
 
@@ -26,10 +30,17 @@ public:
     static Puerto puertos[MAX_PUERTOS-1];
     static void agregarPuerto(string, string, DtFecha&);
     static int ultimoPuerto;
+    static bool existePuerto(string);
+    int ultimoArribo;
+    void setArribo(Arribo);
+    Arribo* getArribos();
+    static int getPosicionPuerto(string);
+    static void agregarArribo(string, string, float);
 private:
     string id;
     string nombre;
     DtFecha fechaCreacion;
+    Arribo arribos[29];
 };
 
 

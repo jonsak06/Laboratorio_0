@@ -13,6 +13,7 @@ using namespace std;
 DtFecha ingresarFecha();
 
 int main() {
+
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Bienvenido~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 
     DtFecha hoy;
@@ -35,6 +36,11 @@ int main() {
     //variables de agregarBarco
     string nombreBarco, idBarco;
     DtBarco barco;
+
+    //variables de agregarArribo
+    string idPuertoArribos, idBarcoArribos;
+    float cargaDespacho;
+    Puerto puertoArribos;
 
     do
     {
@@ -69,7 +75,7 @@ int main() {
         case 2:
             cout << "\nIngrese el nombre del barco: ";
             cin >> nombreBarco;
-            cout << "Ingreses el id del barco: ";
+            cout << "Ingrese el id del barco: ";
             cin >> idBarco;
             barco = DtBarco(nombreBarco,idBarco);
             try
@@ -87,6 +93,28 @@ int main() {
             Col::listarPuertos(); /*Lo correcto por lo que entiendo de la letra seria que este metodo devolviese un array y 
                                     luego mostrar el contenido aca directo o con otra funcion. En ese caso no se crearia el 
                                     Col::datosPuertos, se crearia un nuevo array cada vez que se llame la funcion*/
+            break;
+
+        case 4: //Mañana sigo con esta operacion, ando bastante trancado con segmentation faults y bad_allocs de las excepciones
+            cout << "Ingrese el id del puerto: ";
+            cin >> idPuertoArribos;
+            cout << "Ingrese el id del barco: ";
+            cin >> idBarcoArribos;
+            cout << "Ingrese la carga a despachar: ";
+            cin >> cargaDespacho;
+            try {
+                Puerto::agregarArribo(idPuertoArribos, idBarcoArribos, cargaDespacho);
+            }
+            catch(exception& e)
+            {
+                cout << e.what() << endl;
+            }  
+            puertoArribos = Puerto::puertos[Puerto::getPosicionPuerto(idPuertoArribos)];
+            puertoArribos.getArribos()[puertoArribos.ultimoArribo-1].SetFecha(hoy);
+            for(int i=0;i<puertoArribos.ultimoArribo;i++)
+            {
+                cout << puertoArribos.getArribos()[i].GetCarga();
+            }
             break;
 
         default:

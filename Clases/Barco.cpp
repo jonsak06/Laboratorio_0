@@ -126,7 +126,55 @@ void Barco::agregarBarco(DtBarco& barco)
             break;
         }
         BarcoPasajeros::barcosPasajeros[ultimoBarcoPasajeros] = BarcoPasajeros(barco.GetNombre(), barco.GetId(), cantidadPasajeros, tamanio);
-        cout << "Barco agregado\n";
+        cout << "\nBarco agregado\n";
     }
 
+}
+
+bool Barco::existeBarcoPasajeros(string idBarcoPjs)
+{
+    for(int i=0;i<Barco::ultimoBarcoPasajeros;i++)
+    {
+        if(idBarcoPjs == BarcoPasajeros::barcosPasajeros[i].GetId())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Barco::existeBarcoPesquero(string idBarcoPq)
+{
+    for(int i=0;i<Barco::ultimoBarcoPesquero;i++)
+    {
+        if(idBarcoPq == BarcoPesquero::barcosPesqueros[i].GetId())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+int Barco::getPosicionBarcoPasajeros(string idBarcoPjs)
+{
+    for(int i=0;i<BarcoPasajeros::ultimoBarcoPasajeros;i++)
+    {
+        if(idBarcoPjs == BarcoPasajeros::barcosPasajeros[i].GetId())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int Barco::getPosicionBarcoPesquero(string idBarcoPq)
+{
+    for(int i=0;i<BarcoPesquero::ultimoBarcoPesquero;i++)
+    {
+        if(idBarcoPq == BarcoPesquero::barcosPesqueros[i].GetId())
+        {
+            return i;
+        }
+    }
+    return -1;
 }

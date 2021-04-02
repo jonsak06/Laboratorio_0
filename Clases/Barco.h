@@ -24,6 +24,10 @@ class Barco {
         static void agregarBarco(DtBarco& barco);
         static int ultimoBarcoPasajeros;
         static int ultimoBarcoPesquero;
+        static bool existeBarcoPasajeros(string);
+        static bool existeBarcoPesquero(string);
+        static int getPosicionBarcoPasajeros(string); 
+        static int getPosicionBarcoPesquero(string); 
     private:
         string nombre;
         string id;

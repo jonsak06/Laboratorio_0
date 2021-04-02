@@ -13,9 +13,13 @@ public:
     DtBarcoPasajeros();
     ~DtBarcoPasajeros();
     DtBarcoPasajeros(string, string, int, TipoTamanio);
+    string GetNombre() const;
+    string GetId() const;
     TipoTamanio GetTamanio() const;
     int GetCantPasajeros() const;
 private:
+    string nombre;
+    string id;
     int cantPasajeros;
     TipoTamanio tamanio;
 };
