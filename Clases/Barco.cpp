@@ -40,7 +40,7 @@ string Barco::GetNombre() const {
     return nombre;
 }
 
-Barco* barcos[MAX_BARCOS-1] = {};
+Barco* Barco::barcos[MAX_BARCOS-1] = {};
 int Barco::ultimoBarco = 0;
 
 bool Barco::existeBarco(string idBarco)

@@ -44,4 +44,7 @@ Col.o: Clases/Col.cpp
 	g++ -c Clases/Col.cpp
 
 clean: 
-	rm */*.o main.o a.out
+	rm */*.o main.o a.out 
+
+cleanWindows:	
+	del /Q /S .\Clases\*.o .\Datatypes\*.o .\Otros\*.o main.o a.exe

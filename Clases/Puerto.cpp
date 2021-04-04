@@ -7,6 +7,7 @@ Puerto::Puerto(const Puerto& orig) {
 }
 
 Puerto::~Puerto() {
+    //cout << "\nPuerto destruido\n";
 }
 
 Puerto::Puerto(string Nombre,string Id,DtFecha Fecha) {

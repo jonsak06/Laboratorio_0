@@ -11,6 +11,7 @@ BarcoPesquero::BarcoPesquero(const BarcoPesquero& orig) {
 }
 
 BarcoPesquero::~BarcoPesquero() {
+    cout << "\nbarco destruido\n";
 }
 
 BarcoPesquero::BarcoPesquero(string Nombre, string Id, int Capacidad, int Carga) : Barco(Nombre,Id) {

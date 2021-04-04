@@ -4,6 +4,7 @@ DtFecha::DtFecha() {
 }
 
 DtFecha::~DtFecha() {
+    //cout << "\nfecha destruida\n";
 }
 
 DtFecha::DtFecha(int Dia, int Mes, int Anio) {
