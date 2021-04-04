@@ -15,19 +15,18 @@ class Barco {
         Barco(const Barco& orig);
         virtual ~Barco();
         Barco(string, string);
-        Barco(DtBarco);
+        Barco(DtBarco&);
         void SetId(string id);
         string GetId() const;
         void SetNombre(string nombre);
         string GetNombre() const;
-        virtual void arribar(float); 
+        virtual void arribar(float) = 0; /*Barco pasa a ser abstracta, no se pueden crear instancias directas, solo se puede 
+                                        trabajar con punteros o referencia*/
+        static Barco* barcos[MAX_BARCOS-1];
+        static int ultimoBarco;
+        static bool existeBarco(string);
+        static int getPosicionBarco(string);
         static void agregarBarco(DtBarco& barco);
-        static int ultimoBarcoPasajeros;
-        static int ultimoBarcoPesquero;
-        static bool existeBarcoPasajeros(string);
-        static bool existeBarcoPesquero(string);
-        static int getPosicionBarcoPasajeros(string); 
-        static int getPosicionBarcoPesquero(string); 
     private:
         string nombre;
         string id;

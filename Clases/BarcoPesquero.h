@@ -16,12 +16,13 @@ public:
     ~BarcoPesquero();
     BarcoPesquero(string, string, int, int);
     BarcoPesquero(DtBarcoPesquero);
+    BarcoPesquero(Barco*, int, int);
+    BarcoPesquero(DtBarco&, int, int);
     void SetCarga(int carga);
     int GetCarga() const;
     void SetCapacidad(int capacidad);
     int GetCapacidad() const;
     void arribar(float);
-    static BarcoPesquero barcosPesqueros[MAX_BARCOS/2-1];
 private:
     int capacidad;
     int carga;

@@ -4,24 +4,26 @@
 #include "../Datatypes/DtFecha.h"
 #include "../Datatypes/DtArribo.h"
 #include "Barco.h"
+#include "BarcoPasajeros.h"
+#include "BarcoPesquero.h"
 
 class Arribo {
 public:
     Arribo();
     Arribo(const Arribo& orig);
     ~Arribo();
-    Arribo(DtFecha,float);
+    Arribo(DtFecha,float,Barco*);
     Arribo(DtArribo);
     void SetCarga(float carga);
     float GetCarga() const;
     void SetFecha(DtFecha fecha);
     DtFecha GetFecha() const;
-    void setBarco(Barco);
-    Barco getBarco() const;
+    void setBarco(Barco*);
+    Barco* getBarco() const;
 private:
     DtFecha fecha;
     float carga;
-    Barco barco;
+    Barco* barco;
 };
 
 #endif

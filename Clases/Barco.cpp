@@ -19,7 +19,7 @@ Barco::Barco(string Nombre, string Id) {
     this->id = Id;
 }
 
-Barco::Barco(DtBarco barco) {
+Barco::Barco(DtBarco& barco) {
     this->nombre = barco.GetNombre();
     this->id = barco.GetId();
 }
@@ -40,15 +40,34 @@ string Barco::GetNombre() const {
     return nombre;
 }
 
-void Barco::arribar(float cargaDespacho) {
-    
+Barco* barcos[MAX_BARCOS-1] = {};
+int Barco::ultimoBarco = 0;
+
+bool Barco::existeBarco(string idBarco)
+{
+    for(int i=0;i<Barco::ultimoBarco;i++)
+    {
+        if(idBarco == Barco::barcos[i]->GetId())
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
-BarcoPasajeros BarcoPasajeros::barcosPasajeros[MAX_BARCOS/2-1] = {};
-BarcoPesquero BarcoPesquero::barcosPesqueros[MAX_BARCOS/2-1] = {};
-int Barco::ultimoBarcoPasajeros = 0;
-int Barco::ultimoBarcoPesquero = 0;
-int opcion;
+int Barco::getPosicionBarco(string idBarcoPjs)
+{
+    for(int i=0;i<Barco::ultimoBarco;i++)
+    {
+        if(idBarcoPjs == Barco::barcos[i]->GetId())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int opcionBarco;
 int capacidad;
 int carga;
 int cantidadPasajeros;
@@ -56,10 +75,9 @@ int tamanioElegido;
 TipoTamanio tamanio;
 void Barco::agregarBarco(DtBarco& barco)
 {
-    for(int i=0; i<ultimoBarcoPesquero;i++)
+    for(int i=0; i<Barco::ultimoBarco;i++)
     {
-        if(barco.GetId() == BarcoPesquero::barcosPesqueros[i].GetId() 
-        || barco.GetId() == BarcoPasajeros::barcosPasajeros[i].GetId())
+        if(barco.GetId() == Barco::barcos[i]->GetId())//se utiliza flecha porque el array guarda punteros, no instancias de Barco
         {
             throw invalid_argument("\nEl barco ya existe\n");
             return;
@@ -68,14 +86,14 @@ void Barco::agregarBarco(DtBarco& barco)
     while(true)
     {
         cout << "Tipo de barco:\n" << "1- Barco pesquero\n" << "2- Barco de pasajeros\n";
-        cin >> opcion;
-        if(opcion == 1 || opcion == 2)
+        cin >> opcionBarco;
+        if(opcionBarco == 1 || opcionBarco == 2)
         {
             break;
         }
     }
     
-    if(opcion == 1)
+    if(opcionBarco == 1)
     {
         cout << "Ingrese capacidad del barco: ";
         cin >> capacidad;
@@ -90,8 +108,8 @@ void Barco::agregarBarco(DtBarco& barco)
                 break;
             }
         }
-        BarcoPesquero::barcosPesqueros[ultimoBarcoPesquero] = BarcoPesquero(barco.GetNombre(),barco.GetId(),capacidad,carga);
-        ultimoBarcoPesquero++;
+        Barco::barcos[Barco::ultimoBarco] = new BarcoPesquero(barco, capacidad, carga);//usa constructor que recibe (DtBarco&, capacidad, carga)
+        Barco::ultimoBarco++;
         cout << "Barco agregado\n";
     }
     else{
@@ -107,7 +125,6 @@ void Barco::agregarBarco(DtBarco& barco)
                 break;
             }
         }
-
         switch (tamanioElegido)
         {
         case 1:
@@ -125,56 +142,9 @@ void Barco::agregarBarco(DtBarco& barco)
         default:
             break;
         }
-        BarcoPasajeros::barcosPasajeros[ultimoBarcoPasajeros] = BarcoPasajeros(barco.GetNombre(), barco.GetId(), cantidadPasajeros, tamanio);
+        Barco::barcos[Barco::ultimoBarco] = new BarcoPasajeros(barco, cantidadPasajeros, tamanio); 
+        Barco::ultimoBarco++;
         cout << "\nBarco agregado\n";
     }
 
-}
-
-bool Barco::existeBarcoPasajeros(string idBarcoPjs)
-{
-    for(int i=0;i<Barco::ultimoBarcoPasajeros;i++)
-    {
-        if(idBarcoPjs == BarcoPasajeros::barcosPasajeros[i].GetId())
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Barco::existeBarcoPesquero(string idBarcoPq)
-{
-    for(int i=0;i<Barco::ultimoBarcoPesquero;i++)
-    {
-        if(idBarcoPq == BarcoPesquero::barcosPesqueros[i].GetId())
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-int Barco::getPosicionBarcoPasajeros(string idBarcoPjs)
-{
-    for(int i=0;i<BarcoPasajeros::ultimoBarcoPasajeros;i++)
-    {
-        if(idBarcoPjs == BarcoPasajeros::barcosPasajeros[i].GetId())
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-
-int Barco::getPosicionBarcoPesquero(string idBarcoPq)
-{
-    for(int i=0;i<BarcoPesquero::ultimoBarcoPesquero;i++)
-    {
-        if(idBarcoPq == BarcoPesquero::barcosPesqueros[i].GetId())
-        {
-            return i;
-        }
-    }
-    return -1;
 }

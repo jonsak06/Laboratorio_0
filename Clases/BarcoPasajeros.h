@@ -12,12 +12,13 @@ public:
     ~BarcoPasajeros();
     BarcoPasajeros(string, string, int, TipoTamanio);
     BarcoPasajeros(DtBarcoPasajeros);
+    BarcoPasajeros(Barco*, int, TipoTamanio);
+    BarcoPasajeros(DtBarco&, int, TipoTamanio);
     void SetTamanio(TipoTamanio tamanio);
     TipoTamanio GetTamanio() const;
     void SetCantPasajeros(int cantPasajeros);
     int GetCantPasajeros() const;
     void arribar(float);
-    static BarcoPasajeros barcosPasajeros[MAX_BARCOS/2-1];
 private:
     int cantPasajeros;
     TipoTamanio tamanio;
