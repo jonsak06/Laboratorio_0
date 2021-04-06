@@ -4,7 +4,7 @@ DtFecha::DtFecha() {
 }
 
 DtFecha::~DtFecha() {
-    //cout << "\nfecha destruida\n";
+    // cout << "\nfecha destruida\n";
 }
 
 DtFecha::DtFecha(int Dia, int Mes, int Anio) {
@@ -20,15 +20,15 @@ DtFecha::DtFecha(int Dia, int Mes, int Anio) {
     }
 }
 
-int DtFecha::GetAnio() const {
+int DtFecha::getAnio() const {
     return anio;
 }
 
-int DtFecha::GetMes() const {
+int DtFecha::getMes() const {
     return mes;
 }
 
-int DtFecha::GetDia() const {
+int DtFecha::getDia() const {
     return dia;
 }
 

@@ -10,9 +10,9 @@ public:
     DtFecha();
     ~DtFecha();
     DtFecha(int, int, int);
-    int GetAnio() const;
-    int GetMes() const;
-    int GetDia() const;
+    int getAnio() const;
+    int getMes() const;
+    int getDia() const;
 private:
     int dia;
     int mes;

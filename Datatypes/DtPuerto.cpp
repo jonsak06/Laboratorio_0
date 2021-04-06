@@ -13,19 +13,19 @@ DtPuerto::DtPuerto(string Id, string Nombre, DtFecha FechaCreacion, int CantArri
     this->cantArribos=CantArribos;
 }
 
-int DtPuerto::GetCantArribos() const {
+int DtPuerto::getCantArribos() const {
     return cantArribos;
 }
 
-DtFecha DtPuerto::GetFechaCreacion() const {
+DtFecha DtPuerto::getFechaCreacion() const {
     return fechaCreacion;
 }
 
-string DtPuerto::GetNombre() const {
+string DtPuerto::getNombre() const {
     return nombre;
 }
 
-string DtPuerto::GetId() const {
+string DtPuerto::getId() const {
     return id;
 }
 

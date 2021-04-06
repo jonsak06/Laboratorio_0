@@ -12,10 +12,10 @@ public:
     DtPuerto();
     ~DtPuerto();
     DtPuerto(string, string, DtFecha,int);
-    int GetCantArribos() const;
-    DtFecha GetFechaCreacion() const;
-    string GetNombre() const;
-    string GetId() const;
+    int getCantArribos() const;
+    DtFecha getFechaCreacion() const;
+    string getNombre() const;
+    string getId() const;
 private:
     string id;
     string nombre;

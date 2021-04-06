@@ -9,9 +9,9 @@ public:
     DtArribo();
     ~DtArribo();
     DtArribo(DtFecha,float,DtBarco&);
-    DtBarco& GetBarco() const;
-    float GetCarga() const;
-    DtFecha GetFecha() const;
+    DtBarco& getBarco() const;
+    float getCarga() const;
+    DtFecha getFecha() const;
 private:
     DtFecha fecha;
     float carga;

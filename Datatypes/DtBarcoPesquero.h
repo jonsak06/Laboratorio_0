@@ -2,21 +2,26 @@
 #define DTBARCOPESQUERO_H
 
 #include "DtBarco.h"
+#include "../Otros/TipoTamanio.h"
 
 class DtBarcoPesquero : public DtBarco {
 public:
     DtBarcoPesquero();
     ~DtBarcoPesquero();
     DtBarcoPesquero(string, string, int, int);
-    string GetNombre() const;
-    string GetId () const;
-    int GetCarga() const;
-    int GetCapacidad() const;
+    string getNombre() const;
+    string getId () const;
+    int getCarga() const;
+    int getCapacidad() const;
+    int getCantPasajeros() const;
+    TipoTamanio getTamanio() const;
+    TipoBarco getTipoBarco() const;
 private:
     string nombre;
     string id;
     int capacidad;
     int carga;
+    TipoBarco tipoBarco = pesquero;
 };
 
 #endif

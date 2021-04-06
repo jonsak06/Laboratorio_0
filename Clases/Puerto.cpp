@@ -17,32 +17,32 @@ Puerto::Puerto(string Nombre,string Id,DtFecha Fecha) {
 }
 
 Puerto::Puerto(DtPuerto puerto){
-    this->nombre = puerto.GetNombre();
-    this->id = puerto.GetId();
-    this->fechaCreacion = puerto.GetFechaCreacion();
+    this->nombre = puerto.getNombre();
+    this->id = puerto.getId();
+    this->fechaCreacion = puerto.getFechaCreacion();
 }
 
-void Puerto::SetFechaCreacion(DtFecha fechaCreacion) {
+void Puerto::setFechaCreacion(DtFecha fechaCreacion) {
     this->fechaCreacion = fechaCreacion;
 }
 
-DtFecha Puerto::GetFechaCreacion() const {
+DtFecha Puerto::getFechaCreacion() const {
     return fechaCreacion;
 }
 
-void Puerto::SetNombre(string nombre) {
+void Puerto::setNombre(string nombre) {
     this->nombre = nombre;
 }
 
-string Puerto::GetNombre() const {
+string Puerto::getNombre() const {
     return nombre;
 }
 
-void Puerto::SetId(string id) {
+void Puerto::setId(string id) {
     this->id = id;
 }
 
-string Puerto::GetId() const {
+string Puerto::getId() const {
     return id;
 }
 
@@ -52,7 +52,7 @@ void Puerto::agregarPuerto(string nombre, string id, DtFecha& fechaCreacion)
 {
     for(int i=0; i<ultimoPuerto;i++)
     {
-        if(id==Puerto::puertos[i].GetId()){
+        if(id==Puerto::puertos[i].getId()){
             throw invalid_argument("\nEl puerto ya existe\n");
             return;
         }
@@ -66,7 +66,7 @@ bool Puerto::existePuerto(string idPuerto)
 {
     for(int i=0;i<Puerto::ultimoPuerto;i++)
     {
-        if(idPuerto == Puerto::puertos[i].GetId())
+        if(idPuerto == Puerto::puertos[i].getId())
         {
             return true;
         }
@@ -85,7 +85,7 @@ int Puerto::getPosicionPuerto(string idPuerto)
 {
     for(int i=0;i<Puerto::ultimoPuerto;i++)
     {
-        if(idPuerto == Puerto::puertos[i].GetId())
+        if(idPuerto == Puerto::puertos[i].getId())
         {
             return i;
         }
@@ -98,52 +98,46 @@ Arribo* Puerto::getArribos()
     return this->arribos;
 }
 
-// Puerto puerto;
-// Arribo arribo;
-// Barco* barco;
-// BarcoPasajeros barcoPj;
-// BarcoPesquero barcoPq;
-// void Puerto::agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
-// {
-//     if(!Puerto::existePuerto(idPuerto))
-//     {
-//         throw invalid_argument("\nNo existe el Puerto.\n");
-//         return;
-//     }
-//     else if(!Barco::existeBarcoPesquero(idBarco) && !Barco::existeBarcoPasajeros(idBarco))
-//     {
-//         throw invalid_argument("\nNo existe el Barco.\n");
-//         return;
-//     }
-//     else if(cargaDespacho && Barco::existeBarcoPasajeros(idBarco))
-//     {
-//         throw invalid_argument("\nEl barco es de pasajeros, no puede despachar carga\n");
-//         return;
-//     }
-//     else if(-cargaDespacho > BarcoPesquero::barcosPesqueros[Barco::getPosicionBarcoPesquero(idBarco)].GetCapacidad())
-//     {
-//         throw invalid_argument("\nLa capacidad del barco no es suficiente\n");
-//         return;
-//     }
-//     else if(cargaDespacho > BarcoPesquero::barcosPesqueros[Barco::getPosicionBarcoPesquero(idBarco)].GetCarga())
-//     {
-//         throw invalid_argument("\nEl barco no tiene suficiente carga\n");
-//         return;
-//     }
-//     else
-//     {
-//         if(Barco::existeBarcoPasajeros) {
-//             barcoPj = BarcoPasajeros::barcosPasajeros[Barco::getPosicionBarcoPasajeros(idBarco)];
-//         }
-//         else {
-//             barcoPq =  BarcoPesquero::barcosPesqueros[Barco::getPosicionBarcoPesquero(idBarco)];
-//         }
-//         puerto = Puerto::puertos[Puerto::getPosicionPuerto(idPuerto)];
-//         arribo.SetCarga(cargaDespacho + BarcoPesquero::barcosPesqueros[Barco::getPosicionBarcoPesquero(idBarco)].GetCarga());
-//         arribo.setBarco(barco);
-//         puerto.setArribo(arribo);
-//         barcoPq.arribar(cargaDespacho);
-//         Puerto::puertos[Puerto::getPosicionPuerto(idPuerto)].setArribo(arribo);
-//     }
+Arribo arribo;
+Barco* barco;
+Puerto puerto;
+void Puerto::agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
+{
+    if(!Puerto::existePuerto(idPuerto))// es el unico que da problemas de bad_alloc y segmentation faults
+    {
+        throw invalid_argument("\nNo existe el Puerto.\n");
+    }
+    else if(!Barco::existeBarco(idBarco))
+    {
+        throw invalid_argument("\nNo existe el Barco.\n");
+    }
+    else if(cargaDespacho && (Barco::barcos[Barco::getPosicionBarco(idBarco)]->mostrarTipoBarco() == pasajeros))
+    {
+        throw invalid_argument("\nEl barco es de pasajeros, no puede despachar carga\n");
+    }
+    else if( (Barco::barcos[Barco::getPosicionBarco(idBarco)]->mostrarTipoBarco() == pesquero) &&
+            (-cargaDespacho > ( Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCapacidad() 
+            - Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCarga()) ) )
+    {
+        throw invalid_argument("\nLa capacidad del barco no es suficiente\n");
+    }
+    else if(cargaDespacho > Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCarga())
+    {
+        throw invalid_argument("\nEl barco no tiene suficiente carga\n");
+    }
+    else
+    {
+        barco = Barco::barcos[Barco::getPosicionBarco(idBarco)];
+        puerto = Puerto::puertos[Puerto::getPosicionPuerto(idPuerto)];
+        if(barco->mostrarTipoBarco() == pesquero)
+        {
+            arribo.setCarga(cargaDespacho + barco->getCarga());
+        }
+        arribo.setBarco(barco);
+        barco->arribar(cargaDespacho);
+        puerto.setArribo(arribo);
+        cout << puerto.getArribos()[0].getCarga() << "\t" << puerto.getArribos()[0].getFecha().getAnio() << "\t";
+        cout << "\nArribo agregado\n";
+    }
     
-// }
+}

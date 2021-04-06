@@ -4,8 +4,8 @@ Arribo::Arribo() {
 }
 
 Arribo::Arribo(const Arribo& orig) {
-    this->carga=orig.GetCarga();
-    this->fecha=orig.GetFecha();
+    this->carga=orig.getCarga();
+    this->fecha=orig.getFecha();
     this->barco = orig.getBarco();
 
 }
@@ -20,25 +20,25 @@ Arribo::Arribo(DtFecha Fecha, float Carga, Barco* barco) {
 }
 
 Arribo::Arribo(DtArribo datavalueArribo) {
-    this->fecha = datavalueArribo.GetFecha();
-    this->carga = datavalueArribo.GetCarga();
-    this->barco->SetNombre(datavalueArribo.GetBarco().GetNombre());
-    this->barco->SetId(datavalueArribo.GetBarco().GetId());
+    this->fecha = datavalueArribo.getFecha();
+    this->carga = datavalueArribo.getCarga();
+    this->barco->setNombre(datavalueArribo.getBarco().getNombre());
+    this->barco->setId(datavalueArribo.getBarco().getId());
 }
 
-void Arribo::SetCarga(float carga) {
+void Arribo::setCarga(float carga) {
     this->carga = carga;
 }
 
-float Arribo::GetCarga() const {
+float Arribo::getCarga() const {
     return carga;
 }
 
-void Arribo::SetFecha(DtFecha fecha) {
+void Arribo::setFecha(DtFecha fecha) {
     this->fecha = fecha;
 }
 
-DtFecha Arribo::GetFecha() const {
+DtFecha Arribo::getFecha() const {
     return fecha;
 }
 

@@ -18,11 +18,14 @@ public:
     BarcoPesquero(DtBarcoPesquero);
     BarcoPesquero(Barco*, int, int);
     BarcoPesquero(DtBarco&, int, int);
-    void SetCarga(int carga);
-    int GetCarga() const;
-    void SetCapacidad(int capacidad);
-    int GetCapacidad() const;
+    void setCarga(int carga);
+    int getCarga() const;
+    void setCapacidad(int capacidad);
+    int getCapacidad() const;
+    int getCantPasajeros() const;
+    TipoTamanio getTamanio() const;
     void arribar(float);
+    TipoBarco mostrarTipoBarco();
 private:
     int capacidad;
     int carga;

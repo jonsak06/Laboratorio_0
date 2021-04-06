@@ -4,10 +4,10 @@ BarcoPesquero::BarcoPesquero() {
 }
 
 BarcoPesquero::BarcoPesquero(const BarcoPesquero& orig) {
-    this->SetNombre(orig.GetNombre());
-    this->SetId(orig.GetId());
-    this->capacidad=orig.GetCapacidad();
-    this->carga=orig.GetCarga();
+    this->setNombre(orig.getNombre());
+    this->setId(orig.getId());
+    this->capacidad=orig.getCapacidad();
+    this->carga=orig.getCarga();
 }
 
 BarcoPesquero::~BarcoPesquero() {
@@ -20,39 +20,39 @@ BarcoPesquero::BarcoPesquero(string Nombre, string Id, int Capacidad, int Carga)
 }
 
 BarcoPesquero::BarcoPesquero(DtBarcoPesquero barcoPesquero){
-    this->SetNombre(barcoPesquero.GetNombre());
-    this->SetId(barcoPesquero.GetId());
-    this->capacidad = barcoPesquero.GetCapacidad();
-    this->carga = barcoPesquero.GetCarga();
+    this->setNombre(barcoPesquero.getNombre());
+    this->setId(barcoPesquero.getId());
+    this->capacidad = barcoPesquero.getCapacidad();
+    this->carga = barcoPesquero.getCarga();
 }
 
 BarcoPesquero::BarcoPesquero(Barco* barco, int capacidad, int carga) {
-    this->SetNombre(barco->GetNombre());
-    this->SetId(barco->GetId());
+    this->setNombre(barco->getNombre());
+    this->setId(barco->getId());
     this->capacidad = capacidad;
     this->carga = carga;
 }
 
 BarcoPesquero::BarcoPesquero(DtBarco& datvalueBarco, int capacidad, int carga) {
-    this->SetNombre(datvalueBarco.GetNombre());
-    this->SetId(datvalueBarco.GetId());
+    this->setNombre(datvalueBarco.getNombre());
+    this->setId(datvalueBarco.getId());
     this->capacidad = capacidad;
     this->carga = carga;
 }
 
-void BarcoPesquero::SetCarga(int carga) {
+void BarcoPesquero::setCarga(int carga) {
     this->carga = carga;
 }
 
-int BarcoPesquero::GetCarga() const {
+int BarcoPesquero::getCarga() const {
     return carga;
 }
 
-void BarcoPesquero::SetCapacidad(int capacidad) {
+void BarcoPesquero::setCapacidad(int capacidad) {
     this->capacidad = capacidad;
 }
 
-int BarcoPesquero::GetCapacidad() const {
+int BarcoPesquero::getCapacidad() const {
     return capacidad;
 }
 
@@ -60,3 +60,13 @@ void BarcoPesquero::arribar(float cargaDespacho) {
     this->carga = carga - cargaDespacho;
 }
 
+TipoTamanio BarcoPesquero::getTamanio() const {
+    //no hace nada, se necesita crear en Barco y aca para poder utilizar el metodo desde el puntero de tipo Barco
+}
+
+int BarcoPesquero::getCantPasajeros() const {
+}
+
+TipoBarco BarcoPesquero::mostrarTipoBarco() {
+    return pesquero;
+}

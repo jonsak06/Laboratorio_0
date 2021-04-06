@@ -7,8 +7,8 @@ Barco::Barco() {
 }
 
 Barco::Barco(const Barco& orig) {
-    this->id=orig.GetId();
-    this->nombre=orig.GetNombre();
+    this->id=orig.getId();
+    this->nombre=orig.getNombre();
 }
 
 Barco::~Barco() {
@@ -20,23 +20,23 @@ Barco::Barco(string Nombre, string Id) {
 }
 
 Barco::Barco(DtBarco& barco) {
-    this->nombre = barco.GetNombre();
-    this->id = barco.GetId();
+    this->nombre = barco.getNombre();
+    this->id = barco.getId();
 }
 
-void Barco::SetId(string id) {
+void Barco::setId(string id) {
     this->id = id;
 }
 
-string Barco::GetId() const {
+string Barco::getId() const {
     return id;
 }
 
-void Barco::SetNombre(string nombre) {
+void Barco::setNombre(string nombre) {
     this->nombre = nombre;
 }
 
-string Barco::GetNombre() const {
+string Barco::getNombre() const {
     return nombre;
 }
 
@@ -47,7 +47,7 @@ bool Barco::existeBarco(string idBarco)
 {
     for(int i=0;i<Barco::ultimoBarco;i++)
     {
-        if(idBarco == Barco::barcos[i]->GetId())
+        if(idBarco == Barco::barcos[i]->getId())
         {
             return true;
         }
@@ -59,7 +59,7 @@ int Barco::getPosicionBarco(string idBarcoPjs)
 {
     for(int i=0;i<Barco::ultimoBarco;i++)
     {
-        if(idBarcoPjs == Barco::barcos[i]->GetId())
+        if(idBarcoPjs == Barco::barcos[i]->getId())
         {
             return i;
         }
@@ -77,7 +77,7 @@ void Barco::agregarBarco(DtBarco& barco)
 {
     for(int i=0; i<Barco::ultimoBarco;i++)
     {
-        if(barco.GetId() == Barco::barcos[i]->GetId())//se utiliza flecha porque el array guarda punteros, no instancias de Barco
+        if(barco.getId() == Barco::barcos[i]->getId())//se utiliza flecha porque el array guarda punteros, no instancias de Barco
         {
             throw invalid_argument("\nEl barco ya existe\n");
             return;
@@ -95,16 +95,31 @@ void Barco::agregarBarco(DtBarco& barco)
     
     if(opcionBarco == 1)
     {
-        cout << "Ingrese capacidad del barco: ";
-        cin >> capacidad;
+        while(true)
+        {
+            cout << "Ingrese capacidad del barco: ";
+            cin >> capacidad;
+            if(capacidad < 0)
+            {
+                cout << "\nLa capacidad debe ser mayor o igual a 0\n";
+            }
+            else {
+                break;
+            }
+        }
         while(true)
         {
             cout << "Ingrese la carga del barco: ";
             cin >> carga;
-            if(carga > capacidad)
+            if(carga < 0)
+            {
+                cout << "\nLa carga no puede ser menor a 0.\n";
+            }
+            else if(carga > capacidad)
             {
                 cout << "\nLa carga no puede ser mayor a la capacidad.\n";
-            }else{
+            }
+            else {
                 break;
             }
         }
@@ -112,10 +127,19 @@ void Barco::agregarBarco(DtBarco& barco)
         Barco::ultimoBarco++;
         cout << "Barco agregado\n";
     }
-    else{
-        
-        cout << "Ingrese la cantidad de pasajeros: ";
-        cin >> cantidadPasajeros;
+    else {
+        while(true)
+        {
+            cout << "Ingrese la cantidad de pasajeros: ";
+            cin >> cantidadPasajeros;
+            if (cantidadPasajeros < 0)
+            {
+                cout << "\nLa cantidad de pasajeros debe ser mayor o igual a 0\n";
+            }
+            else {
+                break;
+            }
+        }
         while(true)
         {
             cout << "Elija el tamanio del barco:\n" << "1- Bote\n" << "2- Crucero\n" << "3- Galeon\n" << "4- Transatlantico\n";
@@ -127,20 +151,20 @@ void Barco::agregarBarco(DtBarco& barco)
         }
         switch (tamanioElegido)
         {
-        case 1:
-            tamanio = bote;
-            break;
-        case 2:
-            tamanio = crucero;
-            break;
-        case 3:
-            tamanio = galeon;
-            break;
-        case 4:
-            tamanio = transatlantico;
-            break;
-        default:
-            break;
+            case 1:
+                tamanio = bote;
+                break;
+            case 2:
+                tamanio = crucero;
+                break;
+            case 3:
+                tamanio = galeon;
+                break;
+            case 4:
+                tamanio = transatlantico;
+                break;
+            default:
+                break;
         }
         Barco::barcos[Barco::ultimoBarco] = new BarcoPasajeros(barco, cantidadPasajeros, tamanio); 
         Barco::ultimoBarco++;

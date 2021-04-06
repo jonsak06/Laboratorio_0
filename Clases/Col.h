@@ -12,7 +12,9 @@ class Col {
         Col(DtBarco*);
         static DtPuerto datosPuertos[MAX_PUERTOS-1];
         static int ultimoDatavaluePuerto;
-        static void SetUltomoDatavaluePuerto(int);
-        static void coleccionarDatosPuertos(Puerto[]);
         static void listarPuertos();
+        static DtBarco* datosBarcos[MAX_BARCOS-1];
+        static int ultimoDatavalueBarco;
+        static void listarBarcos();
+
 };

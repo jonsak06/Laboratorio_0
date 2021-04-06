@@ -12,15 +12,15 @@ DtArribo::DtArribo(DtFecha Fecha, float Carga, DtBarco& datavalueBarco) : barco(
     this->carga = Carga;
 }
 
-DtBarco& DtArribo::GetBarco() const {
+DtBarco& DtArribo::getBarco() const {
     return barco;
 }
 
-float DtArribo::GetCarga() const {
+float DtArribo::getCarga() const {
     return carga;
 }
 
-DtFecha DtArribo::GetFecha() const {
+DtFecha DtArribo::getFecha() const {
     return fecha;
 }
 

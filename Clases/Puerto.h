@@ -21,12 +21,12 @@ public:
     ~Puerto();
     Puerto(string, string, DtFecha);
     Puerto(DtPuerto);
-    void SetFechaCreacion(DtFecha fechaCreacion);
-    DtFecha GetFechaCreacion() const;
-    void SetNombre(string nombre);
-    string GetNombre() const;
-    void SetId(string id);
-    string GetId() const;
+    void setFechaCreacion(DtFecha fechaCreacion);
+    DtFecha getFechaCreacion() const;
+    void setNombre(string nombre);
+    string getNombre() const;
+    void setId(string id);
+    string getId() const;
     static Puerto puertos[MAX_PUERTOS-1];
     static void agregarPuerto(string, string, DtFecha&);
     static int ultimoPuerto;

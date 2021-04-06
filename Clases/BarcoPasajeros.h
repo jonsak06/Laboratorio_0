@@ -14,11 +14,14 @@ public:
     BarcoPasajeros(DtBarcoPasajeros);
     BarcoPasajeros(Barco*, int, TipoTamanio);
     BarcoPasajeros(DtBarco&, int, TipoTamanio);
-    void SetTamanio(TipoTamanio tamanio);
-    TipoTamanio GetTamanio() const;
-    void SetCantPasajeros(int cantPasajeros);
-    int GetCantPasajeros() const;
+    void setTamanio(TipoTamanio tamanio);
+    TipoTamanio getTamanio() const;
+    void setCantPasajeros(int cantPasajeros);
+    int getCantPasajeros() const;
+    int getCapacidad() const;
+    int getCarga() const;
     void arribar(float);
+    TipoBarco mostrarTipoBarco();
 private:
     int cantPasajeros;
     TipoTamanio tamanio;

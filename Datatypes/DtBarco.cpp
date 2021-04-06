@@ -11,11 +11,25 @@ DtBarco::DtBarco(string Nombre, string Id) {
     this->id = Id;
 }
 
-string DtBarco::GetId() const {
+string DtBarco::getId() const {
     return id;
 }
 
-string DtBarco::GetNombre() const {
+string DtBarco::getNombre() const {
     return nombre;
 }
 
+int DtBarco::getCapacidad() const {
+}
+
+int DtBarco::getCarga() const {
+}
+
+int DtBarco::getCantPasajeros() const {
+}
+
+TipoTamanio DtBarco::getTamanio() const {
+}
+
+TipoBarco DtBarco::getTipoBarco() const {
+}

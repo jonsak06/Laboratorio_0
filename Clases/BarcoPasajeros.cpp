@@ -4,10 +4,10 @@ BarcoPasajeros::BarcoPasajeros() {
 }
 
 BarcoPasajeros::BarcoPasajeros(const BarcoPasajeros& orig) {
-    this->SetNombre(orig.GetNombre());
-    this->SetId(orig.GetId());
-    this->cantPasajeros=orig.GetCantPasajeros();
-    this->tamanio=orig.GetTamanio();
+    this->setNombre(orig.getNombre());
+    this->setId(orig.getId());
+    this->cantPasajeros=orig.getCantPasajeros();
+    this->tamanio=orig.getTamanio();
 }
 
 BarcoPasajeros::~BarcoPasajeros() {
@@ -19,42 +19,53 @@ BarcoPasajeros::BarcoPasajeros(string Nombre, string Id, int CantPasajeros, Tipo
 }
 
 BarcoPasajeros::BarcoPasajeros(DtBarcoPasajeros barcoPasajeros){
-    this->SetNombre(barcoPasajeros.GetNombre());
-    this->SetId(barcoPasajeros.GetId());
-    this->cantPasajeros = barcoPasajeros.GetCantPasajeros();
-    this->tamanio = barcoPasajeros.GetTamanio();
+    this->setNombre(barcoPasajeros.getNombre());
+    this->setId(barcoPasajeros.getId());
+    this->cantPasajeros = barcoPasajeros.getCantPasajeros();
+    this->tamanio = barcoPasajeros.getTamanio();
 }
 
 BarcoPasajeros::BarcoPasajeros(Barco* barco, int cantPasajeros, TipoTamanio tamanio) {
-    this->SetNombre(barco->GetNombre());
-    this->SetId(barco->GetId());
+    this->setNombre(barco->getNombre());
+    this->setId(barco->getId());
     this->cantPasajeros = cantPasajeros;
     this->tamanio = tamanio;
 }
 
 BarcoPasajeros::BarcoPasajeros(DtBarco& datavalueBarco, int cantPasajeros, TipoTamanio tamanio) {
-    this->SetNombre(datavalueBarco.GetNombre());
-    this->SetId(datavalueBarco.GetId());
+    this->setNombre(datavalueBarco.getNombre());
+    this->setId(datavalueBarco.getId());
     this->cantPasajeros = cantPasajeros;
     this->tamanio = tamanio;
 }
 
-void BarcoPasajeros::SetTamanio(TipoTamanio tamanio) {
+void BarcoPasajeros::setTamanio(TipoTamanio tamanio) {
     this->tamanio = tamanio;
 }
 
-TipoTamanio BarcoPasajeros::GetTamanio() const {
+TipoTamanio BarcoPasajeros::getTamanio() const {
     return tamanio;
 }
 
-void BarcoPasajeros::SetCantPasajeros(int cantPasajeros) {
+void BarcoPasajeros::setCantPasajeros(int cantPasajeros) {
     this->cantPasajeros = cantPasajeros;
 }
 
-int BarcoPasajeros::GetCantPasajeros() const {
+int BarcoPasajeros::getCantPasajeros() const {
     return cantPasajeros;
 }
 
 void BarcoPasajeros::arribar(float cargaDespacho) {
     //No se realiza ningun cambio porque los barcos de pasajeros no poseen carga
+}
+
+int BarcoPasajeros::getCapacidad() const {
+    //no hace nada, se necesita crear en Barco y aca para poder utilizar el metodo desde el puntero de tipo Barco
+}
+
+int BarcoPasajeros::getCarga() const {
+}
+
+TipoBarco BarcoPasajeros::mostrarTipoBarco() {
+    return pasajeros;
 }

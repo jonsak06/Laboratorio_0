@@ -13,19 +13,28 @@ DtBarcoPesquero::DtBarcoPesquero(string Nombre, string Id, int Capacidad, int Ca
     this->carga=Carga;
 }
 
-string DtBarcoPesquero::GetNombre() const {
+string DtBarcoPesquero::getNombre() const {
     return this->nombre;
 }
 
-string DtBarcoPesquero::GetId () const {
+string DtBarcoPesquero::getId () const {
     return this->id;
 }
 
-int DtBarcoPesquero::GetCarga() const {
+int DtBarcoPesquero::getCarga() const {
     return carga;
 }
 
-int DtBarcoPesquero::GetCapacidad() const {
+int DtBarcoPesquero::getCapacidad() const {
     return capacidad;
 }
 
+int DtBarcoPesquero::getCantPasajeros() const {
+}
+
+TipoTamanio DtBarcoPesquero::getTamanio() const {
+}
+
+TipoBarco DtBarcoPesquero::getTipoBarco() const {
+    return tipoBarco;
+}

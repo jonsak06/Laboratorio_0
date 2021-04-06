@@ -14,10 +14,10 @@ public:
     ~Arribo();
     Arribo(DtFecha,float,Barco*);
     Arribo(DtArribo);
-    void SetCarga(float carga);
-    float GetCarga() const;
-    void SetFecha(DtFecha fecha);
-    DtFecha GetFecha() const;
+    void setCarga(float carga);
+    float getCarga() const;
+    void setFecha(DtFecha fecha);
+    DtFecha getFecha() const;
     void setBarco(Barco*);
     Barco* getBarco() const;
 private:

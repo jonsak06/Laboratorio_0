@@ -11,19 +11,28 @@ DtBarcoPasajeros::DtBarcoPasajeros(string Nombre, string Id, int CantPasajeros, 
     this->tamanio=Tamanio;
 }
 
-string DtBarcoPasajeros::GetNombre() const {
+string DtBarcoPasajeros::getNombre() const {
     return this->nombre;
 }
 
-string DtBarcoPasajeros::GetId () const {
+string DtBarcoPasajeros::getId () const {
     return this->id;
 }
 
-TipoTamanio DtBarcoPasajeros::GetTamanio() const {
+TipoTamanio DtBarcoPasajeros::getTamanio() const {
     return tamanio;
 }
 
-int DtBarcoPasajeros::GetCantPasajeros() const {
+int DtBarcoPasajeros::getCantPasajeros() const {
     return cantPasajeros;
 }
 
+int DtBarcoPasajeros::getCapacidad() const {
+}
+
+int DtBarcoPasajeros::getCarga() const {
+}
+
+TipoBarco DtBarcoPasajeros::getTipoBarco() const {
+    return tipoBarco;
+}
