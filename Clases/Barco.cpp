@@ -14,9 +14,9 @@ Barco::Barco(const Barco& orig) {
 Barco::~Barco() {
 }
 
-Barco::Barco(string Nombre, string Id) {
-    this->nombre = Nombre;
-    this->id = Id;
+Barco::Barco(string nombre, string id) {
+    this->nombre = nombre;
+    this->id = id;
 }
 
 Barco::Barco(DtBarco& barco) {

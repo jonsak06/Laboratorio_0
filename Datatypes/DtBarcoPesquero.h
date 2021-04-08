@@ -6,9 +6,8 @@
 
 class DtBarcoPesquero : public DtBarco {
 public:
-    DtBarcoPesquero();
+    DtBarcoPesquero(const string, const string, const int, const int);
     ~DtBarcoPesquero();
-    DtBarcoPesquero(string, string, int, int);
     string getNombre() const;
     string getId () const;
     int getCarga() const;

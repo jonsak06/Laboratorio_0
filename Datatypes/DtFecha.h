@@ -8,8 +8,8 @@ using namespace std;
 class DtFecha {
 public:
     DtFecha();
+    DtFecha(const int, const int, const int);
     ~DtFecha();
-    DtFecha(int, int, int);
     int getAnio() const;
     int getMes() const;
     int getDia() const;

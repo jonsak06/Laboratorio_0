@@ -12,16 +12,15 @@ const int MAX_BARCOS = 50;
 class Barco {
     public:
         Barco();
-        Barco(const Barco& orig);
+        Barco(const Barco&);
         virtual ~Barco();
         Barco(string, string);
         Barco(DtBarco&);
-        void setId(string id);
+        void setId(string);
         string getId() const;
-        void setNombre(string nombre);
+        void setNombre(string);
         string getNombre() const;
-        virtual void arribar(float) = 0; /*Barco pasa a ser abstracta, no se pueden crear instancias directas, solo se puede 
-                                        trabajar con punteros o referencia*/
+        virtual void arribar(float) = 0;
         virtual int getCapacidad() const = 0;
         virtual int getCarga() const = 0;
         virtual int getCantPasajeros() const = 0;
@@ -30,7 +29,6 @@ class Barco {
         static int ultimoBarco;
         static bool existeBarco(string);
         static int getPosicionBarco(string);
-        static void agregarBarco(DtBarco& barco);
     private:
         string nombre;
         string id;

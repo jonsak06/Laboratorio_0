@@ -7,7 +7,6 @@
 #include "Arribo.h"
 #include "BarcoPesquero.h"
 #include "BarcoPasajeros.h"
-#include <vector>
 #include <string>
 
 using namespace std;
@@ -17,15 +16,15 @@ const int MAX_PUERTOS = 50;
 class Puerto {
 public:
     Puerto();
-    Puerto(const Puerto& orig);
+    Puerto(const Puerto&);
     ~Puerto();
     Puerto(string, string, DtFecha);
     Puerto(DtPuerto);
-    void setFechaCreacion(DtFecha fechaCreacion);
+    void setFechaCreacion(DtFecha);
     DtFecha getFechaCreacion() const;
-    void setNombre(string nombre);
+    void setNombre(string);
     string getNombre() const;
-    void setId(string id);
+    void setId(string);
     string getId() const;
     static Puerto puertos[MAX_PUERTOS-1];
     static int ultimoPuerto;
@@ -33,7 +32,7 @@ public:
     int ultimoArribo = 0;
     void setArribo(Arribo);
     Arribo* getArribos();
-    static int getPosicionPuerto(string);
+    static int obtenerPosicionPuerto(string);
 private:
     string id;
     string nombre;

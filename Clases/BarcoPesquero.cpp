@@ -11,12 +11,11 @@ BarcoPesquero::BarcoPesquero(const BarcoPesquero& orig) {
 }
 
 BarcoPesquero::~BarcoPesquero() {
-    cout << "\nbarco destruido\n";
 }
 
-BarcoPesquero::BarcoPesquero(string Nombre, string Id, int Capacidad, int Carga) : Barco(Nombre,Id) {
-    this->capacidad = Capacidad;
-    this->carga = Carga;
+BarcoPesquero::BarcoPesquero(string nombre, string id, int capacidad, int carga) : Barco(nombre, id) {
+    this->capacidad = capacidad;
+    this->carga = carga;
 }
 
 BarcoPesquero::BarcoPesquero(DtBarcoPesquero barcoPesquero){
@@ -26,18 +25,17 @@ BarcoPesquero::BarcoPesquero(DtBarcoPesquero barcoPesquero){
     this->carga = barcoPesquero.getCarga();
 }
 
-BarcoPesquero::BarcoPesquero(Barco* barco, int capacidad, int carga) {
+BarcoPesquero::BarcoPesquero(Barco* barco) {
     this->setNombre(barco->getNombre());
     this->setId(barco->getId());
-    this->capacidad = capacidad;
-    this->carga = carga;
+    
 }
 
-BarcoPesquero::BarcoPesquero(DtBarco& datvalueBarco, int capacidad, int carga) {
-    this->setNombre(datvalueBarco.getNombre());
-    this->setId(datvalueBarco.getId());
-    this->capacidad = capacidad;
-    this->carga = carga;
+BarcoPesquero::BarcoPesquero(DtBarco& datavalueBarco) {
+    this->setNombre(datavalueBarco.getNombre());
+    this->setId(datavalueBarco.getId());
+    this->setCapacidad(datavalueBarco.getCapacidad());
+    this->setCarga(datavalueBarco.getCarga());
 }
 
 void BarcoPesquero::setCarga(int carga) {
@@ -61,12 +59,11 @@ void BarcoPesquero::arribar(float cargaDespacho) {
 }
 
 TipoTamanio BarcoPesquero::getTamanio() const {
-    //no hace nada, se necesita crear en Barco y aca para poder utilizar el metodo desde el puntero de tipo Barco
 }
 
 int BarcoPesquero::getCantPasajeros() const {
 }
 
-bool BarcoPesquero::esEsteTipo(const Barco* barco) { 
+bool BarcoPesquero::esDeEsteTipo(const Barco* barco) { 
     return (dynamic_cast<const BarcoPesquero*>(barco) != NULL); 
 }

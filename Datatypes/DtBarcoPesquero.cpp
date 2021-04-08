@@ -1,16 +1,13 @@
 #include "DtBarcoPesquero.h"
 
-DtBarcoPesquero::DtBarcoPesquero() {
+DtBarcoPesquero::DtBarcoPesquero(string nombre, string id, int capacidad, int carga) : DtBarco(nombre,id) {
+    this->nombre=nombre;
+    this->id=id;
+    this->capacidad=capacidad;
+    this->carga=carga;
 }
 
 DtBarcoPesquero::~DtBarcoPesquero() {
-}
-
-DtBarcoPesquero::DtBarcoPesquero(string Nombre, string Id, int Capacidad, int Carga) : DtBarco(Nombre,Id) {
-    this->nombre=Nombre;
-    this->id=Id;
-    this->capacidad=Capacidad;
-    this->carga=Carga;
 }
 
 string DtBarcoPesquero::getNombre() const {

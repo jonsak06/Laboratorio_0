@@ -3,10 +3,6 @@
 DtFecha::DtFecha() {
 }
 
-DtFecha::~DtFecha() {
-    // cout << "\nfecha destruida\n";
-}
-
 DtFecha::DtFecha(int Dia, int Mes, int Anio) {
     if(Dia < 1 || Dia > 31 || Mes < 1 || Mes > 12 || Anio < 1900)
     {
@@ -18,6 +14,10 @@ DtFecha::DtFecha(int Dia, int Mes, int Anio) {
         this->mes=Mes;
         this->anio=Anio;
     }
+}
+
+DtFecha::~DtFecha() {
+    // cout << "\nfecha destruida\n";
 }
 
 int DtFecha::getAnio() const {

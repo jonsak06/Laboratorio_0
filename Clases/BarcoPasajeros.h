@@ -8,20 +8,20 @@
 class BarcoPasajeros : public Barco{
 public:
     BarcoPasajeros();
-    BarcoPasajeros(const BarcoPasajeros& orig);
+    BarcoPasajeros(const BarcoPasajeros&);
     ~BarcoPasajeros();
     BarcoPasajeros(string, string, int, TipoTamanio);
     BarcoPasajeros(DtBarcoPasajeros);
-    BarcoPasajeros(Barco*, int, TipoTamanio);
-    BarcoPasajeros(DtBarco&, int, TipoTamanio);
-    void setTamanio(TipoTamanio tamanio);
+    BarcoPasajeros(Barco*);
+    BarcoPasajeros(DtBarco&);
+    void setTamanio(TipoTamanio);
     TipoTamanio getTamanio() const;
-    void setCantPasajeros(int cantPasajeros);
+    void setCantPasajeros(int);
     int getCantPasajeros() const;
     int getCapacidad() const;
     int getCarga() const;
     void arribar(float);
-    static bool esEsteTipo(const Barco*);
+    static bool esDeEsteTipo(const Barco*);
 private:
     int cantPasajeros;
     TipoTamanio tamanio;

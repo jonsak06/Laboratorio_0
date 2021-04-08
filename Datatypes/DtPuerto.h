@@ -11,7 +11,7 @@ class DtPuerto {
 public:
     DtPuerto();
     ~DtPuerto();
-    DtPuerto(string, string, DtFecha,int);
+    DtPuerto(const string, const string, const DtFecha, const int);
     int getCantArribos() const;
     DtFecha getFechaCreacion() const;
     string getNombre() const;

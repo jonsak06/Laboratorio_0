@@ -9,15 +9,14 @@ using namespace std;
 
 class DtBarco {
 public:
-    DtBarco();
+    DtBarco(const string, const string);
     virtual ~DtBarco();
-    DtBarco(string, string);
     string getId() const;
     string getNombre() const;
-    virtual int getCapacidad() const;
-    virtual int getCarga() const;
-    virtual int getCantPasajeros() const;
-    virtual TipoTamanio getTamanio() const;
+    virtual int getCapacidad() const = 0;
+    virtual int getCarga() const = 0;
+    virtual int getCantPasajeros() const = 0;
+    virtual TipoTamanio getTamanio() const = 0;
 private:
     string nombre;
     string id;

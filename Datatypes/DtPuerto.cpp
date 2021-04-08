@@ -3,14 +3,14 @@
 DtPuerto::DtPuerto() {
 }
 
-DtPuerto::~DtPuerto() {
-}
-
 DtPuerto::DtPuerto(string nombre, string id, DtFecha fechaCreacion, int cantArribos) {
     this->id=id;
     this->nombre=nombre;
     this->fechaCreacion=fechaCreacion;
     this->cantArribos=cantArribos;
+}
+
+DtPuerto::~DtPuerto() {
 }
 
 int DtPuerto::getCantArribos() const {

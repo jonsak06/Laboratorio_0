@@ -1,14 +1,11 @@
 #include "DtBarcoPasajeros.h"
 
-DtBarcoPasajeros::DtBarcoPasajeros() {
+DtBarcoPasajeros::DtBarcoPasajeros(string nombre, string id, int cantPasajeros, TipoTamanio tamanio) : DtBarco(nombre,id) {
+    this->cantPasajeros=cantPasajeros;
+    this->tamanio=tamanio;
 }
 
 DtBarcoPasajeros::~DtBarcoPasajeros() {
-}
-
-DtBarcoPasajeros::DtBarcoPasajeros(string Nombre, string Id, int CantPasajeros, TipoTamanio Tamanio) : DtBarco( Nombre, Id) {
-    this->cantPasajeros=CantPasajeros;
-    this->tamanio=Tamanio;
 }
 
 string DtBarcoPasajeros::getNombre() const {
@@ -33,6 +30,6 @@ int DtBarcoPasajeros::getCapacidad() const {
 int DtBarcoPasajeros::getCarga() const {
 }
 
-bool DtBarcoPasajeros::esEsteTipo(const DtBarco* barco) { 
+bool DtBarcoPasajeros::esDeEsteTipo(const DtBarco* barco) { 
     return (dynamic_cast<const DtBarcoPasajeros*>(barco) != NULL); 
 }

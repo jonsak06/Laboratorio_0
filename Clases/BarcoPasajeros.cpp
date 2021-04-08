@@ -13,9 +13,9 @@ BarcoPasajeros::BarcoPasajeros(const BarcoPasajeros& orig) {
 BarcoPasajeros::~BarcoPasajeros() {
 }
 
-BarcoPasajeros::BarcoPasajeros(string Nombre, string Id, int CantPasajeros, TipoTamanio Tamanio) : Barco (Nombre,Id) {
-    this->cantPasajeros = CantPasajeros;
-    this->tamanio = Tamanio;
+BarcoPasajeros::BarcoPasajeros(string nombre, string id, int cantPasajeros, TipoTamanio tamanio) : Barco (nombre,id) {
+    this->cantPasajeros = cantPasajeros;
+    this->tamanio = tamanio;
 }
 
 BarcoPasajeros::BarcoPasajeros(DtBarcoPasajeros barcoPasajeros){
@@ -25,18 +25,18 @@ BarcoPasajeros::BarcoPasajeros(DtBarcoPasajeros barcoPasajeros){
     this->tamanio = barcoPasajeros.getTamanio();
 }
 
-BarcoPasajeros::BarcoPasajeros(Barco* barco, int cantPasajeros, TipoTamanio tamanio) {
+BarcoPasajeros::BarcoPasajeros(Barco* barco) {
     this->setNombre(barco->getNombre());
     this->setId(barco->getId());
-    this->cantPasajeros = cantPasajeros;
-    this->tamanio = tamanio;
+    this->setCantPasajeros(barco->getCantPasajeros());
+    this->setTamanio(barco->getTamanio());
 }
 
-BarcoPasajeros::BarcoPasajeros(DtBarco& datavalueBarco, int cantPasajeros, TipoTamanio tamanio) {
+BarcoPasajeros::BarcoPasajeros(DtBarco& datavalueBarco) {
     this->setNombre(datavalueBarco.getNombre());
     this->setId(datavalueBarco.getId());
-    this->cantPasajeros = cantPasajeros;
-    this->tamanio = tamanio;
+    this->setCantPasajeros(datavalueBarco.getCantPasajeros());
+    this->setTamanio(datavalueBarco.getTamanio());
 }
 
 void BarcoPasajeros::setTamanio(TipoTamanio tamanio) {
@@ -56,16 +56,14 @@ int BarcoPasajeros::getCantPasajeros() const {
 }
 
 void BarcoPasajeros::arribar(float cargaDespacho) {
-    //No se realiza ningun cambio porque los barcos de pasajeros no poseen carga
 }
 
 int BarcoPasajeros::getCapacidad() const {
-    //no hace nada, se necesita crear en Barco y aca para poder utilizar el metodo desde el puntero de tipo Barco
 }
 
 int BarcoPasajeros::getCarga() const {
 }
 
-bool BarcoPasajeros::esEsteTipo(const Barco* barco) { 
+bool BarcoPasajeros::esDeEsteTipo(const Barco* barco) { 
     return (dynamic_cast<const BarcoPasajeros*>(barco) != NULL); 
 }

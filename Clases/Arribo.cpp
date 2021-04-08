@@ -7,15 +7,14 @@ Arribo::Arribo(const Arribo& orig) {
     this->carga=orig.getCarga();
     this->fecha=orig.getFecha();
     this->barco = orig.getBarco();
-
 }
 
 Arribo::~Arribo() {
 }
 
-Arribo::Arribo(DtFecha Fecha, float Carga, Barco* barco) {
-    this->fecha = Fecha;
-    this->carga = Carga;
+Arribo::Arribo(DtFecha fecha, float carga, Barco* barco) {
+    this->fecha = fecha;
+    this->carga = carga;
     this->barco = barco;
 }
 

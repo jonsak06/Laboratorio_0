@@ -12,20 +12,20 @@ class BarcoPesquero : public Barco
 {
 public:
     BarcoPesquero();
-    BarcoPesquero(const BarcoPesquero& orig);
+    BarcoPesquero(const BarcoPesquero&);
     ~BarcoPesquero();
     BarcoPesquero(string, string, int, int);
     BarcoPesquero(DtBarcoPesquero);
-    BarcoPesquero(Barco*, int, int);
-    BarcoPesquero(DtBarco&, int, int);
-    void setCarga(int carga);
+    BarcoPesquero(Barco*);
+    BarcoPesquero(DtBarco&);
+    void setCarga(int);
     int getCarga() const;
-    void setCapacidad(int capacidad);
+    void setCapacidad(int);
     int getCapacidad() const;
     int getCantPasajeros() const;
     TipoTamanio getTamanio() const;
     void arribar(float);
-    static bool esEsteTipo(const Barco*);
+    static bool esDeEsteTipo(const Barco*);
 private:
     int capacidad;
     int carga;

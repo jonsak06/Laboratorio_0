@@ -6,9 +6,8 @@
 
 class DtArribo {
 public:
-    DtArribo();
+    DtArribo(const DtFecha,const float, DtBarco&);
     ~DtArribo();
-    DtArribo(DtFecha,float,DtBarco&);
     DtBarco& getBarco() const;
     float getCarga() const;
     DtFecha getFecha() const;

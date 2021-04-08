@@ -9,14 +9,17 @@ class Sistema {
     public:
         Sistema();
         ~Sistema();
-        DtFecha fechaHoy;
         void agregarPuerto(string, string, DtFecha&);
         int obtenerPosicionUltimoPuerto();
         void agregarArribo(string, string, float);
+        void setFechaHoy(DtFecha);
+        DtFecha getFechaHoy() const;
         DtPuerto* listarPuertos();
         void agregarBarco(DtBarco&);
         static DtBarco** listarBarcos();
         int obtenerPosicionUltimoBarco();
+    private:
+        DtFecha fechaHoy;
 };
 
 #endif

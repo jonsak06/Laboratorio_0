@@ -10,13 +10,13 @@
 class Arribo {
 public:
     Arribo();
-    Arribo(const Arribo& orig);
+    Arribo(const Arribo&);
     ~Arribo();
     Arribo(DtFecha,float,Barco*);
     Arribo(DtArribo);
-    void setCarga(float carga);
+    void setCarga(float);
     float getCarga() const;
-    void setFecha(DtFecha fecha);
+    void setFecha(DtFecha);
     DtFecha getFecha() const;
     void setBarco(Barco*);
     Barco* getBarco() const;

@@ -1,11 +1,17 @@
 #include "Sistema.h"
 
 Sistema::Sistema() {
-
 }
 
 Sistema::~Sistema() {
+}
 
+void Sistema::setFechaHoy(DtFecha fechaHoy) {
+    this->fechaHoy = fechaHoy;
+}
+
+DtFecha Sistema::getFechaHoy() const {
+    return this->fechaHoy;
 }
 
 Puerto Puerto::puertos[MAX_PUERTOS-1] = {};
@@ -43,11 +49,11 @@ void Sistema::agregarArribo(string idPuerto, string idBarco, float cargaDespacho
     {
         throw invalid_argument("\nNo existe el Barco.\n");
     }
-    else if(cargaDespacho && (BarcoPasajeros::esEsteTipo(Barco::barcos[Barco::getPosicionBarco(idBarco)])) )
+    else if(cargaDespacho && (BarcoPasajeros::esDeEsteTipo(Barco::barcos[Barco::getPosicionBarco(idBarco)])) )
     {
         throw invalid_argument("\nEl barco es de pasajeros, no puede despachar carga\n");
     }
-    else if( (BarcoPesquero::esEsteTipo(Barco::barcos[Barco::getPosicionBarco(idBarco)])) &&
+    else if( (BarcoPesquero::esDeEsteTipo(Barco::barcos[Barco::getPosicionBarco(idBarco)])) &&
             (-cargaDespacho > ( Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCapacidad() 
             - Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCarga()) ) )
     {
@@ -60,8 +66,8 @@ void Sistema::agregarArribo(string idPuerto, string idBarco, float cargaDespacho
     else
     {
         barco = Barco::barcos[Barco::getPosicionBarco(idBarco)];
-        puerto = Puerto::puertos[Puerto::getPosicionPuerto(idPuerto)];
-        if(BarcoPesquero::esEsteTipo(barco))
+        puerto = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)];
+        if(BarcoPesquero::esDeEsteTipo(barco))
         {
             arribo.setCarga(cargaDespacho);
         }
@@ -93,109 +99,22 @@ DtPuerto* Sistema::listarPuertos(){
 
 void Sistema::agregarBarco(DtBarco& barco)
 {
-    int opcionBarco;
-    int capacidad;
-    int carga;
-    int cantidadPasajeros;
-    int tamanioElegido;
-    TipoTamanio tamanio;
-
-    for(int i=0; i<Barco::ultimoBarco;i++)
+    if(Barco::existeBarco(barco.getId()))
     {
-        if(barco.getId() == Barco::barcos[i]->getId())
-        {
-            throw invalid_argument("\nEl barco ya existe\n");
-            return;
-        }
-    }
-    while(true)
-    {
-        cout << "Tipo de barco:\n" << "1- Barco pesquero\n" << "2- Barco de pasajeros\n";
-        cin >> opcionBarco;
-        if(opcionBarco == 1 || opcionBarco == 2)
-        {
-            break;
-        }
-    }
-    
-    if(opcionBarco == 1)
-    {
-        while(true)
-        {
-            cout << "Ingrese capacidad del barco: ";
-            cin >> capacidad;
-            if(capacidad < 0)
-            {
-                cout << "\nLa capacidad debe ser mayor o igual a 0\n";
-            }
-            else {
-                break;
-            }
-        }
-        while(true)
-        {
-            cout << "Ingrese la carga del barco: ";
-            cin >> carga;
-            if(carga < 0)
-            {
-                cout << "\nLa carga no puede ser menor a 0.\n";
-            }
-            else if(carga > capacidad)
-            {
-                cout << "\nLa carga no puede ser mayor a la capacidad.\n";
-            }
-            else {
-                break;
-            }
-        }
-        Barco::barcos[Barco::ultimoBarco] = new BarcoPesquero(barco, capacidad, carga);
-        Barco::ultimoBarco++;
-        cout << "Barco agregado\n";
-    }
-    else {
-        while(true)
-        {
-            cout << "Ingrese la cantidad de pasajeros: ";
-            cin >> cantidadPasajeros;
-            if (cantidadPasajeros < 0)
-            {
-                cout << "\nLa cantidad de pasajeros debe ser mayor o igual a 0\n";
-            }
-            else {
-                break;
-            }
-        }
-        while(true)
-        {
-            cout << "Elija el tamanio del barco:\n" << "1- Bote\n" << "2- Crucero\n" << "3- Galeon\n" << "4- Transatlantico\n";
-            cin >> tamanioElegido;
-            if(tamanioElegido == 1 || tamanioElegido == 2 || tamanioElegido == 3 || tamanioElegido == 4)
-            {
-                break;
-            }
-        }
-        switch (tamanioElegido)
-        {
-            case 1:
-                tamanio = bote;
-                break;
-            case 2:
-                tamanio = crucero;
-                break;
-            case 3:
-                tamanio = galeon;
-                break;
-            case 4:
-                tamanio = transatlantico;
-                break;
-            default:
-                break;
-        }
-        Barco::barcos[Barco::ultimoBarco] = new BarcoPasajeros(barco, cantidadPasajeros, tamanio); 
-        Barco::ultimoBarco++;
-        cout << "\nBarco agregado\n";
+        throw invalid_argument("\nEl barco ya existe\n");
+        return;
     }
 
+    try {
+        DtBarcoPesquero& barcoPesq = dynamic_cast<DtBarcoPesquero&>(barco);
+        Barco::barcos[Barco::ultimoBarco] = new BarcoPesquero(barco);
+        Barco::ultimoBarco++;
+    } catch(bad_cast) {
+        Barco::barcos[Barco::ultimoBarco] = new BarcoPasajeros(barco);
+        Barco::ultimoBarco++;
+    }
+
+    cout << "Barco agregado\n";
 }
 
 DtBarco** Sistema::listarBarcos() {
@@ -212,7 +131,7 @@ DtBarco** Sistema::listarBarcos() {
         nombre = Barco::barcos[i]->getNombre();
         id = Barco::barcos[i]->getId();
 
-        if(BarcoPesquero::esEsteTipo(Barco::barcos[i]))
+        if(BarcoPesquero::esDeEsteTipo(Barco::barcos[i]))
         {
             capacidad = Barco::barcos[i]->getCapacidad();
             carga = Barco::barcos[i]->getCarga();

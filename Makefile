@@ -1,5 +1,9 @@
-main: main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o Datatypes/DtPuerto.o Datatypes/DtFecha.o Otros/ingresarFecha.o Clases/Sistema.o
-	g++ main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o Datatypes/DtPuerto.o Datatypes/DtFecha.o Otros/ingresarFecha.o Clases/Sistema.o
+OBJETOS = main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o \
+Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o \
+Datatypes/DtPuerto.o Datatypes/DtFecha.o  Clases/Sistema.o
+
+main: $(OBJETOS)
+	g++ $(OBJETOS)
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -37,14 +41,11 @@ DtPuerto.o: Datatypes/DtPuerto.cpp
 DtFecha.o: Datatypes/DtFecha.cpp
 	g++ -c Datatypes/DtFecha.cpp
 
-ingresarFecha.o: Otros/ingresarFecha.cpp
-	g++ -c Otros/ingresarFecha.cpp
-
 Sistema.o: Clases/Sistema.cpp
 	g++ -c Clases/Sistema.cpp
 
-clean: 
-	rm */*.o main.o a.out 
+clean:
+	rm */*.o main.o a.out
 
-cleanWindows:	
+cleanWindows:
 	del /Q /S .\Clases\*.o .\Datatypes\*.o .\Otros\*.o main.o a.exe

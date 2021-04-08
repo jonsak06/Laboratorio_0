@@ -10,16 +10,15 @@ using namespace std;
 
 class DtBarcoPasajeros : public DtBarco {
 public:
-    DtBarcoPasajeros();
+    DtBarcoPasajeros(const string, const string, const int, const TipoTamanio);
     ~DtBarcoPasajeros();
-    DtBarcoPasajeros(string, string, int, TipoTamanio);
     string getNombre() const;
     string getId() const;
     TipoTamanio getTamanio() const;
     int getCantPasajeros() const;
     int getCapacidad() const;
     int getCarga() const;
-    static bool esEsteTipo(const DtBarco*);
+    static bool esDeEsteTipo(const DtBarco*);
 private:
     string nombre;
     string id;
