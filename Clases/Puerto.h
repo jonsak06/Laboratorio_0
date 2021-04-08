@@ -28,14 +28,12 @@ public:
     void setId(string id);
     string getId() const;
     static Puerto puertos[MAX_PUERTOS-1];
-    static void agregarPuerto(string, string, DtFecha&);
     static int ultimoPuerto;
     static bool existePuerto(string);
-    int ultimoArribo;
+    int ultimoArribo = 0;
     void setArribo(Arribo);
     Arribo* getArribos();
     static int getPosicionPuerto(string);
-    static void agregarArribo(string, string, float);
 private:
     string id;
     string nombre;

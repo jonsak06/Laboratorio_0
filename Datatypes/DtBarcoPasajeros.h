@@ -19,13 +19,12 @@ public:
     int getCantPasajeros() const;
     int getCapacidad() const;
     int getCarga() const;
-    TipoBarco getTipoBarco() const;
+    static bool esEsteTipo(const DtBarco*);
 private:
     string nombre;
     string id;
     int cantPasajeros;
     TipoTamanio tamanio;
-    TipoBarco tipoBarco = pasajeros;
 };
 
 #endif

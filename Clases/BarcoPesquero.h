@@ -25,7 +25,7 @@ public:
     int getCantPasajeros() const;
     TipoTamanio getTamanio() const;
     void arribar(float);
-    TipoBarco mostrarTipoBarco();
+    static bool esEsteTipo(const Barco*);
 private:
     int capacidad;
     int carga;

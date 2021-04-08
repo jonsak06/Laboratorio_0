@@ -30,6 +30,3 @@ int DtBarco::getCantPasajeros() const {
 
 TipoTamanio DtBarco::getTamanio() const {
 }
-
-TipoBarco DtBarco::getTipoBarco() const {
-}

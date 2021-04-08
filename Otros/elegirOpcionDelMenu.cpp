@@ -7,10 +7,10 @@ int elegirOpcionDelMenu()
     int op;
     while (true)
     {
-        cout << "\n             Elija la opcion:\n" << "//////////////////////////////////////////\n" << "1- Agregar puerto\n" 
-                << "2- Agregar barco\n" << "3- Listar puertos\n" << "4- Agregar arribo\n" 
+        cout << "\n             Elija la opcion:\n" << "/////////////////////////////////////////\n" 
+                << "1- Agregar puerto\n" << "2- Agregar barco\n" << "3- Listar puertos\n" << "4- Agregar arribo\n" 
                 << "x5- Obtener info de arribos en un puerto\n" << "x6- Eliminar arribos de un puerto\n" 
-                << "x7- Listar barcos\n" << "0- Salir\n" << "//////////////////////////////////////////\n";
+                << "7- Listar barcos\n" << "0- Salir\n" << "/////////////////////////////////////////\n";
         cin >> op;
         if(op == 1 || op == 2 || op == 3 || op == 4 || op == 7 || op == 0)
         {

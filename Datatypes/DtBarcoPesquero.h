@@ -15,13 +15,11 @@ public:
     int getCapacidad() const;
     int getCantPasajeros() const;
     TipoTamanio getTamanio() const;
-    TipoBarco getTipoBarco() const;
 private:
     string nombre;
     string id;
     int capacidad;
     int carga;
-    TipoBarco tipoBarco = pesquero;
 };
 
 #endif

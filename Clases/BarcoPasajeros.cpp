@@ -66,6 +66,6 @@ int BarcoPasajeros::getCapacidad() const {
 int BarcoPasajeros::getCarga() const {
 }
 
-TipoBarco BarcoPasajeros::mostrarTipoBarco() {
-    return pasajeros;
+bool BarcoPasajeros::esEsteTipo(const Barco* barco) { 
+    return (dynamic_cast<const BarcoPasajeros*>(barco) != NULL); 
 }

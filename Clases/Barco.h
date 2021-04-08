@@ -2,7 +2,6 @@
 #define BARCO_H
 
 #include "../Datatypes/DtBarco.h"
-#include "../Otros/TipoBarco.h"
 
 #include <string>
 
@@ -32,7 +31,6 @@ class Barco {
         static bool existeBarco(string);
         static int getPosicionBarco(string);
         static void agregarBarco(DtBarco& barco);
-        virtual TipoBarco mostrarTipoBarco() = 0;
     private:
         string nombre;
         string id;

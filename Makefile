@@ -1,5 +1,5 @@
-main: main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o Datatypes/DtPuerto.o Datatypes/DtFecha.o Otros/ingresarFecha.o Clases/Col.o
-	g++ main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o Datatypes/DtPuerto.o Datatypes/DtFecha.o Otros/ingresarFecha.o Clases/Col.o
+main: main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o Datatypes/DtPuerto.o Datatypes/DtFecha.o Otros/ingresarFecha.o Clases/Sistema.o
+	g++ main.o Clases/Arribo.o Clases/Barco.o Clases/BarcoPasajeros.o Clases/BarcoPesquero.o Clases/Puerto.o Datatypes/DtArribo.o Datatypes/DtBarco.o Datatypes/DtBarcoPasajeros.o Datatypes/DtBarcoPesquero.o Datatypes/DtPuerto.o Datatypes/DtFecha.o Otros/ingresarFecha.o Clases/Sistema.o
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -40,8 +40,8 @@ DtFecha.o: Datatypes/DtFecha.cpp
 ingresarFecha.o: Otros/ingresarFecha.cpp
 	g++ -c Otros/ingresarFecha.cpp
 
-Col.o: Clases/Col.cpp
-	g++ -c Clases/Col.cpp
+Sistema.o: Clases/Sistema.cpp
+	g++ -c Clases/Sistema.cpp
 
 clean: 
 	rm */*.o main.o a.out 

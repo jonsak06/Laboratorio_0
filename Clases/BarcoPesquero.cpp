@@ -57,7 +57,7 @@ int BarcoPesquero::getCapacidad() const {
 }
 
 void BarcoPesquero::arribar(float cargaDespacho) {
-    this->carga = carga - cargaDespacho;
+    carga -= cargaDespacho;
 }
 
 TipoTamanio BarcoPesquero::getTamanio() const {
@@ -67,6 +67,6 @@ TipoTamanio BarcoPesquero::getTamanio() const {
 int BarcoPesquero::getCantPasajeros() const {
 }
 
-TipoBarco BarcoPesquero::mostrarTipoBarco() {
-    return pesquero;
+bool BarcoPesquero::esEsteTipo(const Barco* barco) { 
+    return (dynamic_cast<const BarcoPesquero*>(barco) != NULL); 
 }
