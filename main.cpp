@@ -9,6 +9,8 @@
 
 using namespace std;
 
+DtFecha Sistema::fechaHoy = DtFecha();
+
 int elegirOpcionDelMenu()
 {
     while (true)
@@ -27,32 +29,23 @@ int elegirOpcionDelMenu()
     return -1;
 }
 
-DtFecha ingresarFecha()
-{
-    int dia, mes, anio;
-    cout << "\nIngrese la fecha en formato dd mm aaaa (separados por espacios): ";
-    cin >> dia >> mes >> anio;
-    
-    return DtFecha(dia, mes, anio);
-}
-
 int main() {
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Bienvenido~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 
     Sistema sistema;
-    DtFecha hoy;
-    
-    do //en lugar de esto se podria usar libreria para tomar la fecha del dia
+
+    int dia, mes, anio;
+    do
     {
         cout << "\nFecha de hoy. ";
         try{
-            hoy = ingresarFecha();
+            cout << "\nIngrese la fecha en formato dd mm aaaa (separados por espacios): ";
+            cin >> dia >> mes >> anio;
+            Sistema::fechaHoy = DtFecha(dia, mes, anio);
         }catch(exception& e){
             cout << e.what() << endl;
         }
-    }while(hoy.getDia() < 1 || hoy.getDia() > 31 || hoy.getMes() < 1 || hoy.getMes() > 12 || hoy.getAnio() < 1900);
-    cout << hoy.getDia() << "/" << hoy.getMes() << "/" << hoy.getAnio() << endl;
-    sistema.setFechaHoy(hoy);
+    }while(dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 1900);
 
     int opcion;
 
@@ -61,9 +54,7 @@ int main() {
         opcion = elegirOpcionDelMenu();
         switch (opcion)
         {
-            case 1:/*el do while de fechaCreacion funca solo la primera vez que hay error en la fecha, a partir de la segunda 
-                    queda guardada la fecha anterior correcta y el puerto se crea con esa. Hay un problema con el destructor de 
-                    DtFecha, si se coloca un cout dentro se puede ver que se llama multiples veces*/
+            case 1:
             {
                 string nombrePuerto, idPuerto;
 
@@ -73,17 +64,16 @@ int main() {
                     cout << "Ingrese el nombre del puerto: ";
                     getline(cin >> ws, nombrePuerto);
                     DtFecha fechaCreacion;
-                    do
-                    {
+                    do {
                         cout << "Fecha de creacion del puerto. ";
                         try{
-                            fechaCreacion = ingresarFecha();
+                            cout << "\nIngrese la fecha en formato dd mm aaaa (separados por espacios): ";
+                            cin >> dia >> mes >> anio;
+                            fechaCreacion = DtFecha(dia, mes, anio);
                         }catch(exception& e){
                             cout << e.what() << endl;
                         }
-                    } while (fechaCreacion.getDia() < 1 || fechaCreacion.getDia() > 31 
-                            || fechaCreacion.getMes() < 1 || fechaCreacion.getMes() > 12 
-                            || fechaCreacion.getAnio() < 1900);
+                    }while(dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 1900);
 
                     sistema.agregarPuerto(nombrePuerto, idPuerto, fechaCreacion);
 
@@ -230,7 +220,7 @@ int main() {
                         cout << "Fecha de creacion: "   << datosPuertos[i].getFechaCreacion().getDia() << "/" 
                                                         << datosPuertos[i].getFechaCreacion().getMes() << "/" 
                                                         << datosPuertos[i].getFechaCreacion().getAnio() << endl;
-                        cout << "Cantidad de arribos: " << datosPuertos[i].getCantArribos();//no esta funcionando
+                        cout << "Cantidad de arribos: " << datosPuertos[i].getCantArribos();
                     }
                     cout << "\n/////////////////////////////\n";
                     delete[] datosPuertos;
@@ -240,28 +230,20 @@ int main() {
 
             case 4:
             {
-                string idPuertoArribos, idBarcoArribos;
+                string idPuerto, idBarco;
                 float cargaDespacho;
-                Puerto puertoArribos;
-                cout << "Ingrese el id del puerto: ";//tira segmentation fault si el puerto no existe
-                cin >> idPuertoArribos;
+                cout << "Ingrese el id del puerto: ";
+                getline(cin >> ws, idPuerto);
                 cout << "Ingrese el id del barco: ";
-                cin >> idBarcoArribos;
+                getline(cin >> ws, idBarco);
                 cout << "Ingrese la carga a despachar: ";
                 cin >> cargaDespacho;
                 try {
-                    sistema.agregarArribo(idPuertoArribos, idBarcoArribos, cargaDespacho);
+                    sistema.agregarArribo(idPuerto, idBarco, cargaDespacho);
                 }
                 catch(exception& e)
                 {
                     cout << e.what() << endl;
-                }
-                //hay problemas con los arribos del puerto
-                puertoArribos = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuertoArribos)];
-                puertoArribos.getArribos()[puertoArribos.ultimoArribo-1].setFecha(hoy);
-                for(int i=0;i<puertoArribos.ultimoArribo;i++)
-                {
-                    cout << puertoArribos.getArribos()[i].getCarga();
                 }
             }
             break;

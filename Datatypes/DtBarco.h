@@ -9,6 +9,7 @@ using namespace std;
 
 class DtBarco {
 public:
+    DtBarco();
     DtBarco(const string, const string);
     virtual ~DtBarco();
     string getId() const;

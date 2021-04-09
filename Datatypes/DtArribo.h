@@ -2,10 +2,12 @@
 #define DTARRIBO_H
 
 #include "DtBarco.h"
+#include "DtBarcoPesquero.h"
 #include "DtFecha.h"
 
 class DtArribo {
 public:
+    DtArribo();
     DtArribo(const DtFecha,const float, DtBarco&);
     ~DtArribo();
     DtBarco& getBarco() const;

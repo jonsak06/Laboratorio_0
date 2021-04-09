@@ -55,7 +55,7 @@ bool Barco::existeBarco(string idBarco)
     return false;
 }
 
-int Barco::getPosicionBarco(string idBarcoPjs)
+int Barco::obtenerPosicionBarco(string idBarcoPjs)
 {
     for(int i=0;i<Barco::ultimoBarco;i++)
     {

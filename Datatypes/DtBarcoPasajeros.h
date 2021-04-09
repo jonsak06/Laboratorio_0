@@ -10,6 +10,7 @@ using namespace std;
 
 class DtBarcoPasajeros : public DtBarco {
 public:
+    DtBarcoPasajeros();
     DtBarcoPasajeros(const string, const string, const int, const TipoTamanio);
     ~DtBarcoPasajeros();
     string getNombre() const;

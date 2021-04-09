@@ -1,9 +1,10 @@
 #include "Arribo.h"
 
-Arribo::Arribo() {
+Barco* objBarco;
+Arribo::Arribo() : barco(objBarco) {
 }
 
-Arribo::Arribo(const Arribo& orig) {
+Arribo::Arribo(const Arribo& orig) : barco(orig.getBarco()) {
     this->carga=orig.getCarga();
     this->fecha=orig.getFecha();
     this->barco = orig.getBarco();
@@ -12,17 +13,10 @@ Arribo::Arribo(const Arribo& orig) {
 Arribo::~Arribo() {
 }
 
-Arribo::Arribo(DtFecha fecha, float carga, Barco* barco) {
+Arribo::Arribo(DtFecha fecha, float carga, Barco* barco) : barco(barco) {
     this->fecha = fecha;
     this->carga = carga;
     this->barco = barco;
-}
-
-Arribo::Arribo(DtArribo datavalueArribo) {
-    this->fecha = datavalueArribo.getFecha();
-    this->carga = datavalueArribo.getCarga();
-    this->barco->setNombre(datavalueArribo.getBarco().getNombre());
-    this->barco->setId(datavalueArribo.getBarco().getId());
 }
 
 void Arribo::setCarga(float carga) {

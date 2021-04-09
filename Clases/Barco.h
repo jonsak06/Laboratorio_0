@@ -28,7 +28,7 @@ class Barco {
         static Barco* barcos[MAX_BARCOS-1];
         static int ultimoBarco;
         static bool existeBarco(string);
-        static int getPosicionBarco(string);
+        static int obtenerPosicionBarco(string);
     private:
         string nombre;
         string id;

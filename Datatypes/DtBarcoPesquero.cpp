@@ -1,5 +1,8 @@
 #include "DtBarcoPesquero.h"
 
+DtBarcoPesquero::DtBarcoPesquero() {
+}
+
 DtBarcoPesquero::DtBarcoPesquero(string nombre, string id, int capacidad, int carga) : DtBarco(nombre,id) {
     this->nombre=nombre;
     this->id=id;

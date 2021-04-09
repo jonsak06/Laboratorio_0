@@ -13,7 +13,6 @@ public:
     Arribo(const Arribo&);
     ~Arribo();
     Arribo(DtFecha,float,Barco*);
-    Arribo(DtArribo);
     void setCarga(float);
     float getCarga() const;
     void setFecha(DtFecha);

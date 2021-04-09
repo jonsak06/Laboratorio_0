@@ -6,14 +6,6 @@ Sistema::Sistema() {
 Sistema::~Sistema() {
 }
 
-void Sistema::setFechaHoy(DtFecha fechaHoy) {
-    this->fechaHoy = fechaHoy;
-}
-
-DtFecha Sistema::getFechaHoy() const {
-    return this->fechaHoy;
-}
-
 Puerto Puerto::puertos[MAX_PUERTOS-1] = {};
 int Puerto::ultimoPuerto = 0;
 void Sistema::agregarPuerto(string nombre, string id, DtFecha& fechaCreacion)
@@ -37,11 +29,7 @@ int Sistema::obtenerPosicionUltimoPuerto() {
 
 void Sistema::agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
 {
-    Arribo arribo;
-    Barco* barco;
-    Puerto puerto;
-
-    if(!Puerto::existePuerto(idPuerto))// es el unico que da problemas de bad_alloc y segmentation faults
+    if(!Puerto::existePuerto(idPuerto))
     {
         throw invalid_argument("\nNo existe el Puerto.\n");
     }
@@ -49,32 +37,31 @@ void Sistema::agregarArribo(string idPuerto, string idBarco, float cargaDespacho
     {
         throw invalid_argument("\nNo existe el Barco.\n");
     }
-    else if(cargaDespacho && (BarcoPasajeros::esDeEsteTipo(Barco::barcos[Barco::getPosicionBarco(idBarco)])) )
+    else if(cargaDespacho && (BarcoPasajeros::esDeEsteTipo(Barco::barcos[Barco::obtenerPosicionBarco(idBarco)])) )
     {
         throw invalid_argument("\nEl barco es de pasajeros, no puede despachar carga\n");
     }
-    else if( (BarcoPesquero::esDeEsteTipo(Barco::barcos[Barco::getPosicionBarco(idBarco)])) &&
-            (-cargaDespacho > ( Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCapacidad() 
-            - Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCarga()) ) )
+    else if( (BarcoPesquero::esDeEsteTipo(Barco::barcos[Barco::obtenerPosicionBarco(idBarco)])) &&
+            (-cargaDespacho > ( Barco::barcos[Barco::obtenerPosicionBarco(idBarco)]->getCapacidad() 
+            - Barco::barcos[Barco::obtenerPosicionBarco(idBarco)]->getCarga()) ) )
     {
         throw invalid_argument("\nLa capacidad del barco no es suficiente\n");
     }
-    else if(cargaDespacho > Barco::barcos[Barco::getPosicionBarco(idBarco)]->getCarga())
+    else if(cargaDespacho > Barco::barcos[Barco::obtenerPosicionBarco(idBarco)]->getCarga())
     {
         throw invalid_argument("\nEl barco no tiene suficiente carga\n");
     }
     else
     {
-        barco = Barco::barcos[Barco::getPosicionBarco(idBarco)];
-        puerto = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)];
+        Barco* barco = Barco::barcos[Barco::obtenerPosicionBarco(idBarco)];
+        Puerto& puerto = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)];
+        Arribo arribo(Sistema::fechaHoy, cargaDespacho, barco);
+        puerto.setArribo(arribo);
         if(BarcoPesquero::esDeEsteTipo(barco))
         {
             arribo.setCarga(cargaDespacho);
         }
-        arribo.setBarco(barco);
         barco->arribar(cargaDespacho);
-        puerto.setArribo(arribo);
-        cout << puerto.getArribos()[0].getCarga() << "\t" << puerto.getArribos()[0].getFecha().getAnio() << "\t";
         cout << "\nArribo agregado\n";
     }
 }
@@ -105,7 +92,7 @@ void Sistema::agregarBarco(DtBarco& barco)
         return;
     }
 
-    try {
+    try {//esta es una forma de aplicar el dynamic_cast con referencias en lugar de punteros
         DtBarcoPesquero& barcoPesq = dynamic_cast<DtBarcoPesquero&>(barco);
         Barco::barcos[Barco::ultimoBarco] = new BarcoPesquero(barco);
         Barco::ultimoBarco++;
@@ -123,8 +110,6 @@ DtBarco** Sistema::listarBarcos() {
     TipoTamanio tamanioBarco;
     DtBarco** datosBarcos = new DtBarco*[MAX_BARCOS-1];
     int ultimaPosicion = Barco::ultimoBarco;
-    BarcoPasajeros* barcoPasajeros;
-    BarcoPesquero* barcoPesquero;
 
     for(int i=0;i<ultimaPosicion;i++)
     {
@@ -148,3 +133,23 @@ DtBarco** Sistema::listarBarcos() {
 int Sistema::obtenerPosicionUltimoBarco() {
     return Barco::ultimoBarco;
 }
+
+// DtArribo* obtenerInfoArribosEnPuerto(string idPuerto) {
+//     if(!Puerto::existePuerto(idPuerto))
+//     {
+//         throw invalid_argument("\nNo existe el Puerto.\n");
+//     }
+//     else {
+//         DtArribo* datosArribos = new DtArribo[29];
+//         Puerto& puerto = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)];
+//         int ultimaPosicionArribo = puerto.ultimoArribo;
+//         for(int i=0; i < ultimaPosicionArribo; i++)
+//         {
+//             Barco* barco = puerto.getArribos()[i].getBarco();
+//             DtBarco& dvBarco(barco->getNombre(), barco->getId);
+//             datosArribos[i] = DtArribo(puerto.getArribos()[i].getFecha(), puerto.getArribos()[i].getCarga(), puerto.getArribos()[i].getBarco());
+//             DtFecha& fechaArribo = ;
+           
+//         }
+//     }
+// }
