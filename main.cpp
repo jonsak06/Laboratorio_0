@@ -21,7 +21,7 @@ int elegirOpcionDelMenu()
                 << "x5- Obtener info de arribos en un puerto\n" << "x6- Eliminar arribos de un puerto\n" 
                 << "7- Listar barcos\n" << "0- Salir\n" << "/////////////////////////////////////////\n";
         cin >> op;
-        if(op == 1 || op == 2 || op == 3 || op == 4 || op == 7 || op == 0)
+        if(op == 1 || op == 2 || op == 3 || op == 4 || op == 5 || op == 7 || op == 0)
         {
             return op;
         }
@@ -248,42 +248,88 @@ int main() {
             }
             break;
 
-            case 7:
+            case 5:
             {
-                DtBarco** datosBarcos = sistema.listarBarcos();
-                int posicionUltimoBarco = sistema.obtenerPosicionUltimoBarco();
-                DtBarcoPesquero* barcoPesquero;
-                if(posicionUltimoBarco == 0)
+                string idPuerto;
+                cout << "Ingrese el id del puerto: ";
+                getline(cin >> ws, idPuerto);
+                try
                 {
-                    cout << "\nNo hay barcos en el sistema.\n";
-                } else {
-                    //todos los cout de abajo se va a sustituir por cout << datosBarcos[i] una vez este sobrecargado el 
-                    //operador en ambos hijos de DtBarco
-                    cout << "\n Informacion de los barcos:";
-                    for(int i=0;i<posicionUltimoBarco;i++)
+                    DtArribo** datosArribos = sistema.obtenerInfoArribosEnPuerto(idPuerto);
+                    int posicionUltimoArribo = sistema.obtenerPosicionUltimoArribo(idPuerto);
+                    cout << "\nInformacion de los arribos del puerto con id " << idPuerto;
+                    for(int i=0; i<posicionUltimoArribo; i++)
                     {
-                        if(DtBarcoPasajeros::esDeEsteTipo(datosBarcos[i]))
-                        {
-                            cout << "\n/////////////////////////////\n";
-                            cout << "Nombre: " << datosBarcos[i]->getNombre() << endl;
-                            cout << "Id: " << datosBarcos[i]->getId() << endl;
-                            cout << "Tipo de barco: " << "pasajeros\n";
-                            cout << "Cantidad de pasajeros: " << datosBarcos[i]->getCantPasajeros() << endl;
-                            cout << "Tamanio: " << datosBarcos[i]->getTamanio();
-                            //hacer un switch case para que muestre el tamanio y no el int al que corresponde
-                            
-                        } else {
-                            cout << "\n/////////////////////////////\n";
-                            cout << "Nombre: " << datosBarcos[i]->getNombre() << endl;
-                            cout << "Id: " << datosBarcos[i]->getId() << endl;
-                            cout << "Tipo de barco: " << "pesquero\n";
-                            cout << "Capacidad: " << datosBarcos[i]->getCapacidad() << endl;
-                            cout << "Carga: " << datosBarcos[i]->getCarga();
-                        }
+                        cout << "\n/////////////////////////////\n";
+                        cout << "Fecha: " << datosArribos[i]->getFecha().getDia() << "/" 
+                                            << datosArribos[i]->getFecha().getMes() << "/" 
+                                            << datosArribos[i]->getFecha().getAnio() << endl;
+                        cout << "Carga: " << datosArribos[i]->getCarga() << endl;
+                        cout << "Barco: "   << datosArribos[i]->getBarco().getNombre(); //los barcos no quedan bien agregados en el DtArribo
                     }
                     cout << "\n/////////////////////////////\n";
-                    delete[] datosBarcos;
+                    for(int i=0; i<posicionUltimoArribo; i++)
+                    {
+                        delete datosArribos[i];
+                    }
+                    delete[] datosArribos;
                 }
+                catch(exception& e)
+                {
+                    cout << e.what() << endl;
+                }
+                
+            }
+            break;
+
+            case 7:
+        {       
+                try
+                {
+                    DtBarco** datosBarcos = sistema.listarBarcos();
+                    int posicionUltimoBarco = sistema.obtenerPosicionUltimoBarco();
+                    DtBarcoPesquero* barcoPesquero;
+                    if(posicionUltimoBarco == 0)
+                    {
+                        cout << "\nNo hay barcos en el sistema.\n";
+                    } else {
+                        //todos los cout de abajo se va a sustituir por cout << datosBarcos[i] una vez este sobrecargado el 
+                        //operador en ambos hijos de DtBarco
+                        cout << "\n Informacion de los barcos:";
+                        for(int i=0;i<posicionUltimoBarco;i++)
+                        {
+                            if(DtBarcoPasajeros::esDeEsteTipo(datosBarcos[i]))
+                            {
+                                cout << "\n/////////////////////////////\n";
+                                cout << "Nombre: " << datosBarcos[i]->getNombre() << endl;
+                                cout << "Id: " << datosBarcos[i]->getId() << endl;
+                                cout << "Tipo de barco: " << "pasajeros\n";
+                                cout << "Cantidad de pasajeros: " << datosBarcos[i]->getCantPasajeros() << endl;
+                                cout << "Tamanio: " << datosBarcos[i]->getTamanio();
+                                //hacer un switch case para que muestre el tamanio y no el int al que corresponde
+                                
+                            } else {
+                                cout << "\n/////////////////////////////\n";
+                                cout << "Nombre: " << datosBarcos[i]->getNombre() << endl;
+                                cout << "Id: " << datosBarcos[i]->getId() << endl;
+                                cout << "Tipo de barco: " << "pesquero\n";
+                                cout << "Capacidad: " << datosBarcos[i]->getCapacidad() << endl;
+                                cout << "Carga: " << datosBarcos[i]->getCarga();
+                            }
+                        }
+                        cout << "\n/////////////////////////////\n";
+                        for(int i=0; i<posicionUltimoBarco; i++)
+                        {
+                            delete datosBarcos[i];
+                        }
+                        delete[] datosBarcos;
+                    }
+                }
+                catch(exception& e)
+                {
+                    cout << e.what() << endl;
+                }
+                
             }
             break;
 

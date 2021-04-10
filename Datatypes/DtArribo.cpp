@@ -1,6 +1,6 @@
 #include "DtArribo.h"
 
-DtBarcoPesquero dtvBarco("","",0,0);//creo un datavalue de barco cualquiera para poder inicializar el DtArribo
+DtBarcoPesquero dtvBarco("","",0,0);
 DtArribo::DtArribo() : barco(dtvBarco) {
 }
 
@@ -12,7 +12,7 @@ DtArribo::DtArribo(DtFecha fecha, float carga, DtBarco& datavalueBarco) : barco(
 DtArribo::~DtArribo() {
 }
 
-DtBarco& DtArribo::getBarco() const {
+DtBarco& DtArribo::getBarco() {
     return barco;
 }
 

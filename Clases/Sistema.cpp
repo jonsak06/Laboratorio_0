@@ -134,22 +134,37 @@ int Sistema::obtenerPosicionUltimoBarco() {
     return Barco::ultimoBarco;
 }
 
-// DtArribo* obtenerInfoArribosEnPuerto(string idPuerto) {
-//     if(!Puerto::existePuerto(idPuerto))
-//     {
-//         throw invalid_argument("\nNo existe el Puerto.\n");
-//     }
-//     else {
-//         DtArribo* datosArribos = new DtArribo[29];
-//         Puerto& puerto = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)];
-//         int ultimaPosicionArribo = puerto.ultimoArribo;
-//         for(int i=0; i < ultimaPosicionArribo; i++)
-//         {
-//             Barco* barco = puerto.getArribos()[i].getBarco();
-//             DtBarco& dvBarco(barco->getNombre(), barco->getId);
-//             datosArribos[i] = DtArribo(puerto.getArribos()[i].getFecha(), puerto.getArribos()[i].getCarga(), puerto.getArribos()[i].getBarco());
-//             DtFecha& fechaArribo = ;
-           
-//         }
-//     }
-// }
+DtArribo** Sistema::obtenerInfoArribosEnPuerto(string idPuerto) {
+    if(!Puerto::existePuerto(idPuerto))
+    {
+        throw invalid_argument("\nNo existe el Puerto.\n");
+    }
+    else {
+        DtArribo** datosArribos = new DtArribo*[29];
+        Puerto& puerto = Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)];
+        int ultimaPosicionArribo = puerto.ultimoArribo;
+        Barco* barco;
+        for(int i=0; i<ultimaPosicionArribo; i++)
+        {
+            barco = puerto.getArribos()[i].getBarco();
+
+            cout << puerto.getArribos()[i].getBarco()->getNombre() << " ";
+            /*en los arribos el barco esta bien, el problema lo mas seguro siga siendo la referencia en la lista de 
+            incializacion*/
+
+            if(BarcoPesquero::esDeEsteTipo(barco))
+            {
+                DtBarcoPesquero dvBarcoPesquero(barco->getNombre(), barco->getId(), barco->getCapacidad(), barco->getCarga());
+                datosArribos[i] = new DtArribo(puerto.getArribos()[i].getFecha(), puerto.getArribos()[i].getCarga(), dvBarcoPesquero);
+            } else {
+                DtBarcoPasajeros dvBarcoPasajeros(barco->getNombre(), barco->getId(), barco->getCantPasajeros(), barco->getTamanio());
+                datosArribos[i] = new DtArribo(puerto.getArribos()[i].getFecha(), puerto.getArribos()[i].getCarga(), dvBarcoPasajeros);
+            }
+        }
+        return datosArribos;
+    }
+}
+
+int Sistema::obtenerPosicionUltimoArribo(string idPuerto) {
+    return Puerto::puertos[Puerto::obtenerPosicionPuerto(idPuerto)].ultimoArribo;
+}

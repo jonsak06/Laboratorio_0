@@ -10,7 +10,7 @@ public:
     DtArribo();
     DtArribo(const DtFecha,const float, DtBarco&);
     ~DtArribo();
-    DtBarco& getBarco() const;
+    DtBarco& getBarco();
     float getCarga() const;
     DtFecha getFecha() const;
 private:
