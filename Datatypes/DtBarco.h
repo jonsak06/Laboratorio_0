@@ -18,6 +18,8 @@ public:
     virtual int getCarga() const = 0;
     virtual int getCantPasajeros() const = 0;
     virtual TipoTamanio getTamanio() const = 0;
+    friend ostream& operator<<(ostream&, DtBarco*);
+    virtual void mostrarInfo(ostream&) = 0;
 private:
     string nombre;
     string id;

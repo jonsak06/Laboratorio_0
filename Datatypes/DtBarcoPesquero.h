@@ -15,6 +15,7 @@ public:
     int getCapacidad() const;
     int getCantPasajeros() const;
     TipoTamanio getTamanio() const;
+    void mostrarInfo(ostream&);
 private:
     string nombre;
     string id;

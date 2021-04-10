@@ -36,3 +36,12 @@ int DtBarcoPasajeros::getCarga() const {
 bool DtBarcoPasajeros::esDeEsteTipo(const DtBarco* barco) { 
     return (dynamic_cast<const DtBarcoPasajeros*>(barco) != NULL); 
 }
+
+void DtBarcoPasajeros::mostrarInfo(ostream&) {
+    cout << "\n/////////////////////////////\n";
+    cout << "Nombre: " << this->getNombre() << endl;
+    cout << "Id: " << this->getId() << endl;
+    cout << "Tipo de barco: " << "pasajeros\n";
+    cout << "Cantidad de pasajeros: " << this->getCantPasajeros() << endl;
+    cout << "Tamanio: " << this->getTamanio();
+}

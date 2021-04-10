@@ -80,3 +80,15 @@ Arribo* Puerto::getArribos()
 {
     return this->arribos;
 }
+
+void Puerto::setArribos(Arribo* nuevoArray, int nuevaUltimaPosicion) {
+    for(int i=0; i<nuevaUltimaPosicion; i++)
+    {
+        this->arribos[i] = nuevoArray[i];
+    }
+    for(int i=nuevaUltimaPosicion; i<this->ultimoArribo; i++)
+    {
+        this->arribos[i].~Arribo();
+    }
+    this->ultimoArribo = nuevaUltimaPosicion;
+}

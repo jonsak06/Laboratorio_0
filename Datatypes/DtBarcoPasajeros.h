@@ -20,6 +20,7 @@ public:
     int getCapacidad() const;
     int getCarga() const;
     static bool esDeEsteTipo(const DtBarco*);
+    void mostrarInfo(ostream&);
 private:
     string nombre;
     string id;

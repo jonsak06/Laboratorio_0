@@ -1,18 +1,18 @@
 #include "DtArribo.h"
 
-DtBarcoPesquero dtvBarco("","",0,0);
-DtArribo::DtArribo() : barco(dtvBarco) {
+DtArribo::DtArribo() {
 }
 
-DtArribo::DtArribo(DtFecha fecha, float carga, DtBarco& datavalueBarco) : barco(datavalueBarco) { 
+DtArribo::DtArribo(DtFecha fecha, float carga, DtBarco* datavalueBarco) { 
     this->fecha = fecha;
     this->carga = carga;
+    this->barco = datavalueBarco;
 }
 
 DtArribo::~DtArribo() {
 }
 
-DtBarco& DtArribo::getBarco() {
+DtBarco* DtArribo::getBarco() {
     return barco;
 }
 

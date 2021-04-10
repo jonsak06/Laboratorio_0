@@ -8,15 +8,15 @@
 class DtArribo {
 public:
     DtArribo();
-    DtArribo(const DtFecha,const float, DtBarco&);
+    DtArribo(const DtFecha,const float, DtBarco*);
     ~DtArribo();
-    DtBarco& getBarco();
+    DtBarco* getBarco();
     float getCarga() const;
     DtFecha getFecha() const;
 private:
     DtFecha fecha;
     float carga;
-    DtBarco& barco;
+    DtBarco* barco;
 };
 
 #endif

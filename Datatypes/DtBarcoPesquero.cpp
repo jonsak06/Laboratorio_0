@@ -17,7 +17,7 @@ string DtBarcoPesquero::getNombre() const {
     return this->nombre;
 }
 
-string DtBarcoPesquero::getId () const {
+string DtBarcoPesquero::getId() const {
     return this->id;
 }
 
@@ -33,4 +33,13 @@ int DtBarcoPesquero::getCantPasajeros() const {
 }
 
 TipoTamanio DtBarcoPesquero::getTamanio() const {
+}
+
+void DtBarcoPesquero::mostrarInfo(ostream&) {
+    cout << "\n/////////////////////////////\n";
+    cout << "Nombre: " << this->getNombre() << endl;
+    cout << "Id: " << this->getId() << endl;
+    cout << "Tipo de barco: " << "pesquero\n";
+    cout << "Capacidad: " << this->getCapacidad() << endl;
+    cout << "Carga: " << this->getCarga();
 }

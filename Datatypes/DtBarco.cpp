@@ -18,3 +18,8 @@ string DtBarco::getId() const {
 string DtBarco::getNombre() const {
     return nombre;
 }
+
+ostream& operator<<(ostream& salida, DtBarco* barco) {
+    barco->mostrarInfo(salida);
+    return salida;
+}

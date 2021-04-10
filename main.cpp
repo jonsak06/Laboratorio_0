@@ -18,10 +18,10 @@ int elegirOpcionDelMenu()
         int op;
         cout << "\n             Elija la opcion:\n" << "/////////////////////////////////////////\n" 
                 << "1- Agregar puerto\n" << "2- Agregar barco\n" << "3- Listar puertos\n" << "4- Agregar arribo\n" 
-                << "x5- Obtener info de arribos en un puerto\n" << "x6- Eliminar arribos de un puerto\n" 
+                << "5- Obtener info de arribos en un puerto\n" << "6- Eliminar arribos de un puerto\n" 
                 << "7- Listar barcos\n" << "0- Salir\n" << "/////////////////////////////////////////\n";
         cin >> op;
-        if(op == 1 || op == 2 || op == 3 || op == 4 || op == 5 || op == 7 || op == 0)
+        if(op == 1 || op == 2 || op == 3 || op == 4 || op == 5 || op == 6 || op == 7 || op == 0)
         {
             return op;
         }
@@ -255,22 +255,22 @@ int main() {
                 getline(cin >> ws, idPuerto);
                 try
                 {
-                    DtArribo** datosArribos = sistema.obtenerInfoArribosEnPuerto(idPuerto);
+                    DtArribo* datosArribos = sistema.obtenerInfoArribosEnPuerto(idPuerto);
                     int posicionUltimoArribo = sistema.obtenerPosicionUltimoArribo(idPuerto);
                     cout << "\nInformacion de los arribos del puerto con id " << idPuerto;
                     for(int i=0; i<posicionUltimoArribo; i++)
                     {
                         cout << "\n/////////////////////////////\n";
-                        cout << "Fecha: " << datosArribos[i]->getFecha().getDia() << "/" 
-                                            << datosArribos[i]->getFecha().getMes() << "/" 
-                                            << datosArribos[i]->getFecha().getAnio() << endl;
-                        cout << "Carga: " << datosArribos[i]->getCarga() << endl;
-                        cout << "Barco: "   << datosArribos[i]->getBarco().getNombre(); //los barcos no quedan bien agregados en el DtArribo
+                        cout << "Fecha: " << datosArribos[i].getFecha().getDia() << "/" 
+                                            << datosArribos[i].getFecha().getMes() << "/" 
+                                            << datosArribos[i].getFecha().getAnio() << endl;
+                        cout << "Carga: " << datosArribos[i].getCarga() << endl;
+                        cout << "Id del barco: " << datosArribos[i].getBarco()->getId();
                     }
                     cout << "\n/////////////////////////////\n";
                     for(int i=0; i<posicionUltimoArribo; i++)
                     {
-                        delete datosArribos[i];
+                        delete datosArribos[i].getBarco();
                     }
                     delete[] datosArribos;
                 }
@@ -282,40 +282,50 @@ int main() {
             }
             break;
 
+            case 6:
+            {
+                string idPuerto;
+                cout << "Ingrese el id del puerto: ";
+                getline(cin >> ws, idPuerto);
+                DtFecha fechaArribos;
+                do
+                {
+                    cout << "\nFecha del arribo. ";
+                    try{
+                        cout << "\nIngrese la fecha en formato dd mm aaaa (separados por espacios): ";
+                        cin >> dia >> mes >> anio;
+                        fechaArribos = DtFecha(dia, mes, anio);
+                    }catch(exception& e){
+                        cout << e.what() << endl;
+                    }
+                }while(dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 1900);
+
+                try
+                {
+                    sistema.eliminarArribos(idPuerto, fechaArribos);
+                }
+                catch(exception& e)
+                {
+                    cout << e.what() << endl;
+                }
+                
+            }
+            break;
+
             case 7:
-        {       
+            {       
                 try
                 {
                     DtBarco** datosBarcos = sistema.listarBarcos();
                     int posicionUltimoBarco = sistema.obtenerPosicionUltimoBarco();
-                    DtBarcoPesquero* barcoPesquero;
                     if(posicionUltimoBarco == 0)
                     {
                         cout << "\nNo hay barcos en el sistema.\n";
                     } else {
-                        //todos los cout de abajo se va a sustituir por cout << datosBarcos[i] una vez este sobrecargado el 
-                        //operador en ambos hijos de DtBarco
                         cout << "\n Informacion de los barcos:";
                         for(int i=0;i<posicionUltimoBarco;i++)
                         {
-                            if(DtBarcoPasajeros::esDeEsteTipo(datosBarcos[i]))
-                            {
-                                cout << "\n/////////////////////////////\n";
-                                cout << "Nombre: " << datosBarcos[i]->getNombre() << endl;
-                                cout << "Id: " << datosBarcos[i]->getId() << endl;
-                                cout << "Tipo de barco: " << "pasajeros\n";
-                                cout << "Cantidad de pasajeros: " << datosBarcos[i]->getCantPasajeros() << endl;
-                                cout << "Tamanio: " << datosBarcos[i]->getTamanio();
-                                //hacer un switch case para que muestre el tamanio y no el int al que corresponde
-                                
-                            } else {
-                                cout << "\n/////////////////////////////\n";
-                                cout << "Nombre: " << datosBarcos[i]->getNombre() << endl;
-                                cout << "Id: " << datosBarcos[i]->getId() << endl;
-                                cout << "Tipo de barco: " << "pesquero\n";
-                                cout << "Capacidad: " << datosBarcos[i]->getCapacidad() << endl;
-                                cout << "Carga: " << datosBarcos[i]->getCarga();
-                            }
+                            cout << datosBarcos[i];
                         }
                         cout << "\n/////////////////////////////\n";
                         for(int i=0; i<posicionUltimoBarco; i++)

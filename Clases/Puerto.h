@@ -32,6 +32,7 @@ public:
     int ultimoArribo = 0;
     void setArribo(Arribo);
     Arribo* getArribos();
+    void setArribos(Arribo*, int);
     static int obtenerPosicionPuerto(string);
 private:
     string id;

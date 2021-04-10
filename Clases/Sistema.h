@@ -17,8 +17,9 @@ class Sistema {
         void agregarBarco(DtBarco&);
         DtBarco** listarBarcos();
         int obtenerPosicionUltimoBarco();
-        DtArribo** obtenerInfoArribosEnPuerto(string);
+        DtArribo* obtenerInfoArribosEnPuerto(string);
         int obtenerPosicionUltimoArribo(string);
+        void eliminarArribos(string, const DtFecha&);
 };
 
 #endif
