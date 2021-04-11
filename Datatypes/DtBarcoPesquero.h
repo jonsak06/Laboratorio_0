@@ -8,16 +8,12 @@ public:
     DtBarcoPesquero();
     DtBarcoPesquero(const string, const string, const int, const int);
     ~DtBarcoPesquero();
-    string getNombre() const;
-    string getId () const;
     int getCarga() const;
     int getCapacidad() const;
     int getCantPasajeros() const;
     TipoTamanio getTamanio() const;
     void mostrarInfo(ostream&);
 private:
-    string nombre;
-    string id;
     int capacidad;
     int carga;
 };

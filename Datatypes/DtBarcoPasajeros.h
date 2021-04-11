@@ -10,8 +10,6 @@ public:
     DtBarcoPasajeros();
     DtBarcoPasajeros(const string, const string, const int, const TipoTamanio);
     ~DtBarcoPasajeros();
-    string getNombre() const;
-    string getId() const;
     TipoTamanio getTamanio() const;
     int getCantPasajeros() const;
     int getCapacidad() const;
@@ -19,8 +17,6 @@ public:
     static bool esDeEsteTipo(const DtBarco*);
     void mostrarInfo(ostream&);
 private:
-    string nombre;
-    string id;
     int cantPasajeros;
     TipoTamanio tamanio;
 };
