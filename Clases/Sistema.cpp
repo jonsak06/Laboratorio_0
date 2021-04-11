@@ -92,7 +92,7 @@ void Sistema::agregarBarco(DtBarco& barco)
         return;
     }
 
-    try {//esta es una forma de aplicar el dynamic_cast con referencias en lugar de punteros
+    try {
         DtBarcoPesquero& barcoPesq = dynamic_cast<DtBarcoPesquero&>(barco);
         Barco::barcos[Barco::ultimoBarco] = new BarcoPesquero(barco);
         Barco::ultimoBarco++;
@@ -101,7 +101,7 @@ void Sistema::agregarBarco(DtBarco& barco)
         Barco::ultimoBarco++;
     }
 
-    cout << "Barco agregado\n";
+    cout << "\nBarco agregado\n";
 }
 
 DtBarco** Sistema::listarBarcos() {
@@ -151,8 +151,6 @@ DtArribo* Sistema::obtenerInfoArribosEnPuerto(string idPuerto) {
             {
                 barco = puerto.getArribos()[i].getBarco();
 
-                cout << puerto.getArribos()[i].getBarco()->getNombre() << " ";
-
                 if(BarcoPesquero::esDeEsteTipo(barco))
                 {
                     dvBarco = new DtBarcoPesquero(barco->getNombre(), barco->getId(), barco->getCapacidad(), barco->getCarga());
@@ -197,8 +195,13 @@ void Sistema::eliminarArribos(string idPuerto, const DtFecha& fecha) {
             }
         }
         ultimaPosicionArribo = j;
-
+        if(puerto.ultimoArribo != ultimaPosicionArribo)
+        {
+            cout << "\nArribos eliminados\n";
+        } else {
+            cout << "\nEl puerto no tiene arribos en esa fecha\n";
+        }
         puerto.setArribos(arribos, ultimaPosicionArribo);
-        cout << "\nArribos eliminados\n";
+
     }
 }

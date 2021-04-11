@@ -4,10 +4,6 @@
 #include "./Barco.h"
 #include "../Datatypes/DtBarcoPesquero.h"
 
-#include <string>
-
-using namespace std;
-
 class BarcoPesquero : public Barco 
 {
 public:

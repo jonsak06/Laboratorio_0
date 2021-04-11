@@ -1,15 +1,8 @@
 #ifndef PUERTO_H
 #define PUERTO_H
 
-#include "../Datatypes/DtFecha.h"
 #include "../Datatypes/DtPuerto.h"
-#include "../Datatypes/DtArribo.h"
 #include "Arribo.h"
-#include "BarcoPesquero.h"
-#include "BarcoPasajeros.h"
-#include <string>
-
-using namespace std;
 
 const int MAX_PUERTOS = 50;
 

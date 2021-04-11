@@ -17,7 +17,6 @@ DtFecha::DtFecha(int Dia, int Mes, int Anio) {
 }
 
 DtFecha::~DtFecha() {
-    // cout << "\nfecha destruida\n";
 }
 
 int DtFecha::getAnio() const {

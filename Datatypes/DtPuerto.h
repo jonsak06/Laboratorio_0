@@ -3,10 +3,6 @@
 
 #include "DtFecha.h"
 
-#include <string>
-
-using namespace std;
-
 class DtPuerto {
 public:
     DtPuerto();

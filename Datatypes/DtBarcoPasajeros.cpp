@@ -38,10 +38,28 @@ bool DtBarcoPasajeros::esDeEsteTipo(const DtBarco* barco) {
 }
 
 void DtBarcoPasajeros::mostrarInfo(ostream&) {
+    string tamanioBarco;
+    switch (this->getTamanio())
+    {
+        case bote:
+            tamanioBarco = "bote";
+            break;
+        case crucero:
+            tamanioBarco = "crucero";
+            break;
+        case galeon:
+            tamanioBarco = "galeon";
+            break;
+        case transatlantico:
+            tamanioBarco = "transatlantico";
+            break;
+        default:
+            break;
+    }
     cout << "\n/////////////////////////////\n";
     cout << "Nombre: " << this->getNombre() << endl;
     cout << "Id: " << this->getId() << endl;
     cout << "Tipo de barco: " << "pasajeros\n";
     cout << "Cantidad de pasajeros: " << this->getCantPasajeros() << endl;
-    cout << "Tamanio: " << this->getTamanio();
+    cout << "Tamanio: " << tamanioBarco;
 }

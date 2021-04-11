@@ -2,7 +2,6 @@
 #define DTBARCOPESQUERO_H
 
 #include "DtBarco.h"
-#include "../Otros/TipoTamanio.h"
 
 class DtBarcoPesquero : public DtBarco {
 public:

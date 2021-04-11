@@ -1,12 +1,9 @@
 #ifndef DTBARCOPASAJEROS_H
 #define DTBARCOPASAJEROS_H
 
-#include "../Otros/TipoTamanio.h"
 #include "DtBarco.h"
 
 #include <string>
-
-using namespace std;
 
 class DtBarcoPasajeros : public DtBarco {
 public:

@@ -1,10 +1,9 @@
 #include "Arribo.h"
 
-Barco* objBarco;
 Arribo::Arribo() {
 }
 
-Arribo::Arribo(const Arribo& orig) : barco(orig.getBarco()) {
+Arribo::Arribo(const Arribo& orig) {
     this->carga=orig.getCarga();
     this->fecha=orig.getFecha();
     this->barco = orig.getBarco();

@@ -2,7 +2,6 @@
 #define BARCOPASAJEROS_H
 
 #include "./Barco.h"
-#include "../Otros/TipoTamanio.h"
 #include "../Datatypes/DtBarcoPasajeros.h"
 
 class BarcoPasajeros : public Barco{

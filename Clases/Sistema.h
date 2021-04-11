@@ -3,7 +3,12 @@
 
 #include <string>
 #include "../Datatypes/DtFecha.h"
+#include "../Datatypes/DtPuerto.h"
+#include "../Datatypes/DtBarco.h"
+#include "../Datatypes/DtArribo.h"
 #include "Puerto.h"
+#include "BarcoPasajeros.h"
+#include "BarcoPesquero.h"
 
 class Sistema {
     public:

@@ -3,8 +3,6 @@
 
 #include "../Datatypes/DtBarco.h"
 
-#include <string>
-
 using namespace std;
 
 const int MAX_BARCOS = 50;

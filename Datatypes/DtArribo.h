@@ -2,7 +2,6 @@
 #define DTARRIBO_H
 
 #include "DtBarco.h"
-#include "DtBarcoPesquero.h"
 #include "DtFecha.h"
 
 class DtArribo {

@@ -1,7 +1,4 @@
 #include "Barco.h"
-#include "BarcoPasajeros.h"
-#include "BarcoPesquero.h"
-#include "../Otros/TipoTamanio.h"
 
 Barco::Barco() {
 }

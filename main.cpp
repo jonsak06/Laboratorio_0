@@ -1,13 +1,4 @@
-#include "Clases/Barco.h"
-#include "Clases/BarcoPasajeros.h"
-#include "Clases/BarcoPesquero.h"
-#include "Datatypes/DtBarco.h"
-#include "Datatypes/DtFecha.h"
-#include "Datatypes/DtPuerto.h"
-#include "Clases/Puerto.h"
 #include "Clases/Sistema.h"
-
-using namespace std;
 
 DtFecha Sistema::fechaHoy = DtFecha();
 
@@ -48,7 +39,6 @@ int main() {
     }while(dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 1900);
 
     int opcion;
-
     do
     {
         opcion = elegirOpcionDelMenu();
@@ -95,7 +85,7 @@ int main() {
 
                 while(true)
                 {
-                    cout << "Tipo de barco:\n" << "1- Barco pesquero\n" << "2- Barco de pasajeros\n";
+                    cout << "\nTipo de barco:\n" << "1- Barco pesquero\n" << "2- Barco de pasajeros\n";
                     cin >> opcionBarco;
                     if(opcionBarco == 1 || opcionBarco == 2)
                     {
@@ -257,7 +247,7 @@ int main() {
                 {
                     DtArribo* datosArribos = sistema.obtenerInfoArribosEnPuerto(idPuerto);
                     int posicionUltimoArribo = sistema.obtenerPosicionUltimoArribo(idPuerto);
-                    cout << "\nInformacion de los arribos del puerto con id " << idPuerto;
+                    cout << "\nArribos del puerto con id " << idPuerto;
                     for(int i=0; i<posicionUltimoArribo; i++)
                     {
                         cout << "\n/////////////////////////////\n";
@@ -318,7 +308,7 @@ int main() {
                 {
                     DtBarco** datosBarcos = sistema.listarBarcos();
                     int posicionUltimoBarco = sistema.obtenerPosicionUltimoBarco();
-                    if(posicionUltimoBarco == 0)
+                    if(!posicionUltimoBarco)
                     {
                         cout << "\nNo hay barcos en el sistema.\n";
                     } else {
@@ -346,7 +336,7 @@ int main() {
             default:
                 break;
         } 
-        
+
     } while(opcion);
     
     return 0;
